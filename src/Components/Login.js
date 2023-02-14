@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "./Header";
+import './login.css'
 
 const Login = () => {
     const [username, setUsername] = useState("")
@@ -18,14 +18,15 @@ const Login = () => {
 
     return (
         <>
-            <body>
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    <input type='text' placeholder="Username" value={username} onChange={handleChangeName}></input>
-                    <input type='text' placeholder="Password" value={password} onChange={handleChangePassword}></input>
-                    <button type="submit">Log In</button>
+            <section className="loginFormContainer">
+                <h1 className="loginTitle">Login</h1>
+                <form onSubmit={handleSubmit} className="formContainer">
+                    <input type='text' placeholder="Username" value={username} onChange={handleChangeName} className="inputLogin"></input>
+                    <input type='text' placeholder="Password" value={password} onChange={handleChangePassword} className="inputLogin"></input>
+                    <button type="submit" className="loginBtn">Log In</button>
                 </form>
-            </body>
+            </section>
+
         </>
     )
 }

@@ -1,0 +1,46 @@
+.loginContainerMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 20%;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputLogin {
+    margin: 1em 0;
+    font-size: 1em;
+    padding-left: 10px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.loginTitle {
+    margin: auto;
+}
+
+.loginBtn {
+    padding: 1em 2em;
+    background-color: #e0dcdc;
+    color: rgb(0, 0, 0);
+    border: none;
+    font-size: 1em;
+    transition: all 1s ease;
+    outline: none;
+}
+
+.loginBtn:hover {
+    background-color: #aaa9a9;
+}
