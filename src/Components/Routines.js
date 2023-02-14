@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import './Routines.css'
+=======
+import React from "react";
+import Header from "./Header";
+
+>>>>>>> c0c71d1e602fdc849f12ae78fe43ab66157732a6
 
 function PublicRoutines() {
     const [routines, setRoutines] = useState([]);
@@ -12,6 +18,7 @@ function PublicRoutines() {
     }, []);
   
     return (
+<<<<<<< HEAD
       <div className="routine-list">
         <h2 className="routine-list-title">Public Routines</h2>
         <div className="routine-list-container">
@@ -38,3 +45,13 @@ function PublicRoutines() {
   }
   
   export default PublicRoutines;
+=======
+        <>
+            <Header />
+            <h1>Routines</h1>
+        </>
+    )
+}
+
+export default Routines
+>>>>>>> c0c71d1e602fdc849f12ae78fe43ab66157732a6
