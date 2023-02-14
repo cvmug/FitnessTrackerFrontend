@@ -11,4 +11,4 @@ const MyRoutines = () => {
     )
 }
 
-export default MyRoutines
+export default MyRoutines;
