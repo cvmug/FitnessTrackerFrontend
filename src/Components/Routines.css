@@ -1,0 +1,39 @@
+.routines-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .routine-card {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .routine-card h3 {
+    margin-top: 0;
+  }
+  
+  .routine-card p {
+    margin: 0;
+  }
+  
+  .routine-card .activities-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .routine-card .activity-item {
+    margin: 10px 0;
+  }
+  
