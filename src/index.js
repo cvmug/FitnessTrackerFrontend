@@ -4,16 +4,25 @@ import Home from './Components/Home';
 import Routines from './Components/Routines';
 import MyRoutines from './Components/MyRoutines';
 import Activities from './Components/Activities';
+import { useState } from 'react';
 
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [token, setToken] = useState('');
+  const [username, setUsername] = useState('');
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route
             path='/'
-            element={<Home />}
+            element={<Home setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              token={token} setToken={setToken}
+              username={username} setUsername={setUsername}
+            />}
           />
           <Route
             path='/routines'
