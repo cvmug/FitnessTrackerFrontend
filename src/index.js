@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
-import Routines from './Components/Routines';
-import MyRoutines from './Components/MyRoutines';
+import Routines from './Components/Routines/PublicRoutines';
+import MyRoutines from './Components/Routines/MyRoutines';
 import Activities from './Components/Activities';
 import { useState } from 'react';
 
