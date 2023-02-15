@@ -1,0 +1,90 @@
+.routine-list {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  .routine-list-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .routine-list-container {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .routine-card {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    height: 250px; /* set a fixed height for the card */
+    overflow: hidden; /* hide any content that overflows the card */
+    transition: box-shadow 0.3s ease;
+    overflow-y: inherit;
+  }
+  
+  .routine-card h3 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .routine-card p {
+    color: #888;
+    font-size: 16px;
+    margin-bottom: 5px;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .activities-list {
+    margin-top: 10px;
+    padding-left: 20px;
+    max-height: 240px;
+    overflow: hidden;
+  }
+  
+  .activity-item {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #ccc;
+  }
+  
+  .activity-item p {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+  }
+  
+  .activity-item p:first-of-type {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .load-more-button{
+    margin-top: 20px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+  }
