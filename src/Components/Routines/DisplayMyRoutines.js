@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddActivityToRoutine from './AddActivityToRoutine';
 import UpdateRoutine from './UpdateRoutine';
+import DeleteRoutine from './DeleteRoutine'
 import './DisplayMyRoutines.css'
 
 export default function DisplayMyRoutines() {
@@ -26,7 +27,7 @@ export default function DisplayMyRoutines() {
       })
         .then((response) => response.json())
         .then((result) => {
-        const userRoutines = result.reverse(); // reverse the order of routines
+        const userRoutines = result.reverse();
           setRoutines(userRoutines);
         })
         .catch((error) => console.log(error));
@@ -68,6 +69,7 @@ export default function DisplayMyRoutines() {
         <div key={routine.id} className="my-routine-card">
           <h3>{routine.name}</h3>
           <p>Goal: {routine.goal}</p>
+          <p>Public: {routine.isPublic ? 'Yes' : 'No'}</p>
           <ul className="activities-list">
             {routine.activities.map((activity) => (
               <li key={activity.id} className="activity-item">
@@ -98,8 +100,16 @@ export default function DisplayMyRoutines() {
             />
           )}
           <UpdateRoutine token={token} routineId={routine.id} />
-        </div>
-      ))}
-    </div>
-  );
-            }
+          <DeleteRoutine 
+          token={token}
+          routineId={routine.id}
+          onRoutineDeleted={() => {
+            const updatedRoutines = routines.filter((r) => r.id !== routine.id);
+            setRoutines(updatedRoutines);
+            }}
+            />
+            </div>
+            ))}
+            </div>
+            );
+}
