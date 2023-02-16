@@ -6,7 +6,6 @@ import MyRoutines from './Components/MyRoutines';
 import Activities from './Components/Activities';
 import { useState } from 'react';
 
-
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState('');
