@@ -18,6 +18,15 @@
     background-color: #023a3e;
 }
 
+.routineSeciton {
+    position: absolute;
+    top: 950px;
+    left: 0;
+    width: 100%;
+    height: 92vh;
+    background-color: #fff7f1;
+}
+
 .imgHome {
     background-image: url("./img/runner4.png");
     width: 125%;
@@ -29,13 +38,64 @@
 
 .homeSlogan {
     margin-top: 2em;
-    padding: 20px;
+    padding: 45px;
     position: relative;
     font-family: "Avenir Next", sans-serif;
     font-weight: 900;
-    font-size: 64px;
+    font-size: 60px;
     text-transform: uppercase;
     font-style: italic;
     letter-spacing: 0.05em;
     display: inline-block;
+}
+
+.routinesSloganHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    padding: 20px;
+    width: 40%;
+    height: 30%;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+.routinesLinkHome {
+    position: absolute;
+    padding: 20px;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-top: 7em;
+    letter-spacing: 0.05em;
+    color: rgb(155, 149, 74);
+}
+
+.imagesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin: auto;
+    padding: 5em;
+    height: 100%;
+    width: 100%;
+}
+
+.bannerContaier {
+    background-image: url("./img/banner.png");
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 2em;
 }
