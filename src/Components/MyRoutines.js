@@ -1,39 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import Header from "./Header";
 
- function PublicRoutines() {
-   const [routines, setRoutines] = useState([]);
 
-   useEffect(() => {
-     fetch('http://fitnesstrac-kr.herokuapp.com/api/routines')
-       .then(response => response.json())
-       .then(data => setRoutines(data))
-       .catch(error => console.error(error));
-   }, []);
+const MyRoutines = ({ setIsLoggedIn, isLoggedIn, setToken, token }) => {
+  return (
+    <>
+      <Header
+        setIsLoggedIn={setIsLoggedIn} setToken={setToken}
+        isLoggedIn={isLoggedIn} token={token} />
+      <h1>MyRoutines</h1>
+    </>
+  )
+}
 
-   return (
-     <div>
-       <h2>Public Routines</h2>
-       <ul>
-         {routines.map(routine => (
-           <li key={routine.id}>
-             <h3>{routine.name}</h3>
-             <p>Goal: {routine.goal}</p>
-             <p>Creator: {routine.creatorName}</p>
-             <ul>
-               {routine.activities.map(activity => (
-                 <li key={activity.id}>
-                   <p>{activity.name}</p>
-                   <p>{activity.description}</p>
-                   <p>Duration: {activity.duration} minutes</p>
-                   <p>Count: {activity.count}</p>
-                 </li>
-               ))}
-             </ul>
-           </li>
-         ))}
-       </ul>
-     </div>
-   );
- }
-
- export default PublicRoutines;
+export default MyRoutines;
