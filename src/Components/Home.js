@@ -30,7 +30,6 @@ const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => 
         }
     }, []);
 
-
     return (
         <>
             <Header
