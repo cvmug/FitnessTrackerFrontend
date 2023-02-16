@@ -47,6 +47,8 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
         user={user}
         setUser={setUser}
       />
+      <div className='blueSec'></div>
+      <div className='leftSection'></div>
       <div className="routine-list">
         <h2 className="routine-list-title">Public Routines</h2>
         <div className="search-box">
@@ -59,20 +61,23 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
         </div>
         <div className="routine-list-container">
           {filteredRoutines.map((routine) => (
-            <div key={routine.id} className="routine-card">
-              <h3>{routine.name}</h3>
-              <p>Goal: {routine.goal}</p>
-              <p>Creator: {routine.creatorName}</p>
-              <ul className="activities-list">
-                {routine.activities.map((activity) => (
-                  <li key={activity.id} className="activity-item">
-                    <p>{activity.name}</p>
-                    <p>{activity.description}</p>
-                    <p>Duration: {activity.duration} minutes</p>
-                    <p>Count: {activity.count}</p>
-                  </li>
-                ))}
-              </ul>
+            <div className='card'>
+
+              <div key={routine.id} className="routine-card">
+                <h3>{routine.name}</h3>
+                <p><strong>Goal: </strong>{routine.goal}</p>
+                <p ><strong >Creator: </strong>{routine.creatorName}</p>
+                <ul className="activities-list">
+                  {routine.activities.map((activity) => (
+                    <li key={activity.id} className="activity-item">
+                      <p>{activity.name}</p>
+                      <p>{activity.description}</p>
+                      <p>Duration: {activity.duration} minutes</p>
+                      <p>Count: {activity.count}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

@@ -1,107 +1,144 @@
 .routine-list {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .routine-list-title {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #555;
-  }
-  
-  .routine-list-container {
-    display: grid;
-    gap: 20px;
-  }
-  
-  .routine-card {
-    background-color: #f5f5f5;
-    border: none;
-    border-radius: 10px;
-    padding: 20px;
-    height: 250px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    overflow-y: inherit;
-  }
-  
-  .routine-card h3 {
-    color: #333;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  .routine-card p {
-    color: #888;
-    font-size: 16px;
-    margin-bottom: 5px;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  .activities-list {
-    margin-top: 10px;
-    padding-left: 20px;
-    max-height: 240px;
-    overflow: hidden;
-  }
-  
-  .activity-item {
-    margin-bottom: 10px;
-    padding-left: 10px;
-    border-left: 3px solid #ccc;
-  }
-  
-  .activity-item p {
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; 
-  }
-  
-  .activity-item p:first-of-type {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  .load-more-button{
-    margin-top: 20px;
-    background-color: #333;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-  }
+  margin: 0 auto;
+  /* max-width: 800px; */
+  padding: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
-  .search-box {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 20px;
-  }
-  
-  .search-box input[type="text"] {
-    box-sizing: border-box;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 250px;
-  }
+.routine-list-title {
+  margin-top: 50px;
+  margin-left: 50px;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.routine-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+.routine-card {
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 340px;
+  padding: 20px;
+  height: 540px;
+  overflow: hidden;
+  overflow-y: inherit;
+  z-index: -1;
+}
+
+.routine-card h3 {
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0.02em 0.15em #1da9cc;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+}
+
+.routine-card p {
+  color: #888;
+  font-size: 16px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  /* text-shadow: -1px -1px 0px gainsboro; */
+}
+
+.routine-card strong {
+  font-weight: bold;
+  color: rgb(197, 195, 195);
+}
+
+.activities-list {
+  margin-top: 10px;
+  padding-left: 20px;
+  max-height: 540px;
+  overflow: hidden;
+}
+
+.activity-item {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-left: 3px solid #ccc;
+
+}
+
+.activity-item p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-item p:first-of-type {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: rgb(150, 147, 147);
+}
+
+.load-more-button {
+  margin-top: 20px;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.search-box {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 20px;
+}
+
+.search-box input[type="text"] {
+  box-sizing: border-box;
+  margin-left: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 250px;
+  height: 50px;
+}
+
+.blueSec {
+  position: fixed;
+  top: 0;
+  left: 58%;
+  width: 50%;
+  z-index: -1;
+  height: 100%;
+  background-color: #023a3e;
+}
+
+.card {
+  background-image: url("../img/card.png");
+  width: 340px;
+  height: 550px;
+  background-repeat: no-repeat;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
