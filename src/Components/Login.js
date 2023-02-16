@@ -10,6 +10,8 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
     const [hideLogForm, setHideLogForm] = useState(false)
     const [userNameTaken, setUserNameTaken] = useState(false)
     const [validInfo, setValidInfo] = useState(true)
+    const [weakPass, setWeakPass] = useState(false)
+    const [registered, setRegistered] = useState(false)
 
     const btnClicked = () => {
         setShowLogin(!showLogin)
@@ -47,6 +49,27 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
             </div>
         )
     }
+    const registeredAlert = () => {
+        return (
+            <div class="alertGreen">
+                <strong>You have been registered!</strong>
+            </div>
+        )
+    }
+    const usernameTakenAlert = () => {
+        return (
+            <div class="alert">
+                <strong>Username already belongs to a user!</strong>
+            </div>
+        )
+    }
+    const passwordTooWeekAlert = () => {
+        return (
+            <div class="alert">
+                <strong>Password too weak, make it larger!</strong>
+            </div>
+        )
+    }
 
     const handleRegisterSumbit = async (event) => {
         event.preventDefault()
@@ -62,6 +85,15 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
         }).then(response => response.json())
             .then(result => {
                 console.log(result.name);
+                console.log(result.message)
+                if (result.name === "PasswordLengthError") {
+                    setWeakPass(true)
+                }
+
+                if (result.message === "you're signed up!") {
+                    setRegistered(true)
+                }
+
                 if (result.name === 'UserExistsError') {
                     setUserNameTaken(true)
                     console.log(userNameTaken)
@@ -135,6 +167,9 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
                             </div>
                             <p className="txt"></p>
                             <form onSubmit={handleRegisterSumbit} className="formContainer">
+                                {userNameTaken && <div className="container">{usernameTakenAlert()}</div>}
+                                {weakPass && <div className="container">{passwordTooWeekAlert()}</div>}
+                                {registered && <div className="container">{registeredAlert()}</div>}
                                 <input type='text' placeholder="Username" value={usernameReg} onChange={handleChangeNameRegister} className="inputLogin"></input>
                                 <input type='password' placeholder="Password" value={passwordReg} onChange={handleChangePasswordRegister} className="inputLogin"></input>
                                 <button type="submit" className="btnModal">Register &rarr;</button>

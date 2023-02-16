@@ -185,22 +185,25 @@
     padding: 20px;
     background-color: #e6857e;
     color: white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-transform: uppercase;
 }
 
 .alertGreen {
     padding: 20px;
     background-color: #617464;
     color: white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-transform: uppercase;
+
 }
 
 .alertGreen strong {
-    letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .alert strong {
-    letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 @keyframes animatetop {
