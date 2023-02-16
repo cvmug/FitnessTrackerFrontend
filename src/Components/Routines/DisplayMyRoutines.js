@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddActivityToRoutine from './AddActivityToRoutine';
+import UpdateRoutine from './UpdateRoutine';
 import './DisplayMyRoutines.css'
 
 export default function DisplayMyRoutines() {
@@ -18,14 +19,14 @@ export default function DisplayMyRoutines() {
     if (localUsername) {
       setUsername(localUsername);
       fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${localUsername}/routines`, {
-        headers: {
+        headers: { 
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
         },
       })
         .then((response) => response.json())
         .then((result) => {
-          const userRoutines = result;
+        const userRoutines = result.reverse(); // reverse the order of routines
           setRoutines(userRoutines);
         })
         .catch((error) => console.log(error));
@@ -96,6 +97,7 @@ export default function DisplayMyRoutines() {
               }}
             />
           )}
+          <UpdateRoutine token={token} routineId={routine.id} />
         </div>
       ))}
     </div>
