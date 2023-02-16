@@ -10,7 +10,7 @@ import { useState } from 'react';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState('');
-  const [username, setUsername] = useState('');
+  const [user, setUser] = useState('');
 
   return (
     <>
@@ -21,20 +21,32 @@ const App = () => {
             element={<Home setIsLoggedIn={setIsLoggedIn}
               isLoggedIn={isLoggedIn}
               token={token} setToken={setToken}
-              username={username} setUsername={setUsername}
+              user={user} setUser={setUser}
             />}
           />
           <Route
             path='/routines'
-            element={<Routines />}
+            element={<Routines
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              token={token} setToken={setToken}
+            />}
           />
           <Route
             path='/myRoutines'
-            element={<MyRoutines />}
+            element={<MyRoutines
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              token={token} setToken={setToken}
+            />}
           />
           <Route
             path='/activities'
-            element={<Activities />}
+            element={<Activities
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              token={token} setToken={setToken}
+            />}
           />
         </Routes>
       </BrowserRouter>
