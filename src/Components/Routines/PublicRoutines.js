@@ -50,7 +50,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
       <div className='blueSec'></div>
       <div className='leftSection'></div>
       <div className="routine-list">
-        <h2 className="routine-list-title">Public Routines</h2>
+        <h2 className="routine-list-title">PUBLIC ROUTINES</h2>
         <div className="search-box">
           <input
             type="text"
@@ -59,6 +59,11 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
             onChange={handleSearchQuery}
           />
         </div>
+        {showLoadMore && (
+          <button className="load-more-button" onClick={handleLoadMore}>
+            Click to show more
+          </button>
+        )}
         <div className="routine-list-container">
           {filteredRoutines.map((routine) => (
             <div className='card'>
@@ -81,11 +86,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
             </div>
           ))}
         </div>
-        {showLoadMore && (
-          <button className="load-more-button" onClick={handleLoadMore}>
-            Click to show more
-          </button>
-        )}
+
       </div>
     </>
   );

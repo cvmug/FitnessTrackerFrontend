@@ -1,6 +1,5 @@
 .routine-list {
   margin: 0 auto;
-  /* max-width: 800px; */
   padding: 20px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -12,6 +11,8 @@
   font-weight: 600;
   margin-bottom: 20px;
   color: #555;
+  margin-left: 4.5em;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .routine-list-container {
@@ -55,7 +56,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-wrap;
-  /* text-shadow: -1px -1px 0px gainsboro; */
 }
 
 .routine-card strong {
@@ -74,7 +74,6 @@
   margin-bottom: 10px;
   padding-left: 10px;
   border-left: 3px solid #ccc;
-
 }
 
 .activity-item p {
@@ -96,14 +95,16 @@
 }
 
 .load-more-button {
-  margin-top: 20px;
+  position: absolute;
   background-color: #333;
   border: none;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   font-size: 16px;
-  padding: 10px 20px;
+  padding: 15px 20px;
+  z-index: 3;
+  margin-left: 1em;
 }
 
 .search-box {
@@ -111,6 +112,8 @@
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 20px;
+  z-index: 3;
+  margin-left: 6em;
 }
 
 .search-box input[type="text"] {
@@ -140,5 +143,10 @@
   height: 550px;
   background-repeat: no-repeat;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all 0.3s ease;
+}
 
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+  transform: scale(1.05);
 }
