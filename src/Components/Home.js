@@ -32,11 +32,27 @@ const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => 
         }
     }, []);
 
+    document.body.onmousemove = function (e) {
+        document.documentElement.style.setProperty(
+            '--x', (
+                e.clientX + window.scrollX
+            )
+        + 'px'
+        );
+        document.documentElement.style.setProperty(
+            '--y', (
+                e.clientY + window.scrollY
+            )
+        + 'px'
+        );
+    }
+
     return (
         <>
             <Header
                 setIsLoggedIn={setIsLoggedIn} setToken={setToken}
                 isLoggedIn={isLoggedIn} token={token} user={user} setUser={setUser} />
+            <div id="invertedcursor"></div>
             <section className="leftSection">
                 <p className="homeSlogan">Track your progress, reach your goals with ease!</p>
             </section>
