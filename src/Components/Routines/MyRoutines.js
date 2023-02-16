@@ -4,6 +4,7 @@ import CreateRoutine from './CreateRoutine'
 import DisplayMyRoutines from './DisplayMyRoutines'
 
 export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setUser }) {
+    
     useEffect(() => {
         const localToken = window.localStorage.getItem('token');
         setToken(localToken);
@@ -28,7 +29,7 @@ export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token,
             .catch((error) => console.log(error));
         }
       }, []);
-      
+
   return (
     <div>
         <Header

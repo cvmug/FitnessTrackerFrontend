@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AddActivityToRoutine from './AddActivityToRoutine';
 import './DisplayMyRoutines.css'
 
 export default function DisplayMyRoutines() {
@@ -60,15 +61,15 @@ export default function DisplayMyRoutines() {
   }, [token]);
 
   return (
-    <div className='my-routine-container'>
-      <h1 className='my-routine-title'>My Routines</h1>
+    <div className="my-routine-container">
+      <h1 className="my-routine-title">My Routines</h1>
       {routines.map((routine) => (
-        <div key={routine.id} className='my-routine-card'>
+        <div key={routine.id} className="my-routine-card">
           <h3>{routine.name}</h3>
           <p>Goal: {routine.goal}</p>
-          <ul className='activities-list'>
+          <ul className="activities-list">
             {routine.activities.map((activity) => (
-              <li key={activity.id} className='activity-item'>
+              <li key={activity.id} className="activity-item">
                 <p>{activity.name}</p>
                 <p>{activity.description}</p>
                 <p>Duration: {activity.duration} minutes</p>
@@ -76,8 +77,27 @@ export default function DisplayMyRoutines() {
               </li>
             ))}
           </ul>
+          {isLoggedIn && (
+            <AddActivityToRoutine
+              routineId={routine.id}
+              activities={routine.activities}
+              onActivityAdded={(newActivity) => {
+                const updatedActivities = [...routine.activities, newActivity];
+                  const updatedRoutines = routines.map((r) => {
+                  if (r.id === routine.id) {
+                    return {
+                      ...r,
+                      activities: updatedActivities,
+                    };
+                  }
+                  return r;
+                });
+                setRoutines(updatedRoutines);
+              }}
+            />
+          )}
         </div>
       ))}
     </div>
   );
-}
+            }
