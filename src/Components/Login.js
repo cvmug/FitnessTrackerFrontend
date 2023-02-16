@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './login.css'
 
-const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, token }) => {
-
-    const [user, setUser] = useState('')
+const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLoggedIn }) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [usernameReg, setUsernameReg] = useState("")
@@ -11,6 +9,7 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, token }) => {
     const [register, setRegister] = useState(false)
     const [hideLogForm, setHideLogForm] = useState(false)
     const [userNameTaken, setUserNameTaken] = useState(false)
+    const [validInfo, setValidInfo] = useState(true)
 
     const btnClicked = () => {
         setShowLogin(!showLogin)
@@ -34,30 +33,20 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, token }) => {
         setPasswordReg(event.target.value)
     }
 
-    const logout = () => {
-        window.localStorage.removeItem('token');
-        setUser({});
+    const loggedInAlert = () => {
+        return (
+            <div class="alertGreen">
+                <strong>Logged In</strong>
+            </div>
+        )
     }
-
-    useEffect(() => {
-        const token = window.localStorage.getItem('token');
-        setToken(token)
-        if (token) {
-            fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-            })
-                .then((response) => response.json())
-                .then((result) => {
-                    const user = result.data;
-                    setUser(user);
-                    console.log(user)
-                })
-                .catch((error) => console.log(error));
-        }
-    }, [token]);
+    const wrongUserAlert = () => {
+        return (
+            <div class="alert">
+                <strong>Wrong username or password</strong>
+            </div>
+        )
+    }
 
     const handleRegisterSumbit = async (event) => {
         event.preventDefault()
@@ -97,8 +86,17 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, token }) => {
                 })
             }).then(response => response.json())
                 .then(result => {
-                    console.log(result);
-                    setToken(result.token)
+                    console.log(result)
+                    if (result.token) {
+                        setIsLoggedIn(true)
+                        localStorage.setItem('token', result.token);
+                        setToken(result.token)
+                        setUser(result.data);
+                    }
+                    if (result.name === 'IncorrectCredentialsError') {
+                        setValidInfo(false)
+                        console.log(validInfo)
+                    }
                 })
                 .catch(console.error);
         }
@@ -110,7 +108,6 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, token }) => {
             {
                 showLogin &&
                 <div className="containerModal" id="modal-opened">
-                    {token && <p>Loged in</p>}
 
                     {!hideLogForm &&
                         <div className="modal">
@@ -119,6 +116,10 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, token }) => {
                             </div>
                             <p className="txt"></p>
                             <form onSubmit={handleSubmit} className="formContainer">
+                                {isLoggedIn ?
+                                    <div className='container'>  {isLoggedIn && loggedInAlert()}</div>
+                                    : <div className="container"> {!validInfo && wrongUserAlert()}</div>}
+
                                 <input type='text' placeholder="Username" value={username} onChange={handleChangeName} className="inputLogin"></input>
                                 <input type='password' placeholder="Password" value={password} onChange={handleChangePassword} className="inputLogin"></input>
                                 <button type="submit" className="btnModal">Log In &rarr;</button>
