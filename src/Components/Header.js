@@ -23,7 +23,7 @@ const Header = ({ setIsLoggedIn, setToken, isLoggedIn, token }) => {
                 <ul className="list">
                     <li><Link to='/' className="headerLink">HOME</Link></li>
                     <li><Link to='/routines' className="headerLink">ROUTINES</Link></li>
-                    {isLoggedIn && <li><Link to='/PublicRoutines' className="headerLink">MY ROUTINES</Link></li>}
+                    {isLoggedIn && <li><Link to='/MyRoutines' className="headerLink">MY ROUTINES</Link></li>}
                     <li><Link to='/activities' className="headerLink">ACTIVITIES</Link></li>
                     {isLoggedIn ?
                         <button onClick={handleLogOutBtn} className='loginButtonHeader'>LOG OUT</button>
