@@ -72,26 +72,43 @@ export default function CreateRoutine() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="create-routine-form">
-      <div className="form-group">
-        <label htmlFor="name" className="form-label">
-          Name:
+    <form onSubmit={handleSubmit} className="form-container">
+    <h1 className='form-title'> Create Routine </h1>
+    <br/>
+      <label htmlFor="name" className="form-label">
+        Name:
+      </label>
+      <input
+        type="text"
+        id="name"
+        value={name}
+        onChange={handleNameChange}
+        className="form-input"
+      />
+      <label htmlFor="goal" className="form-label">
+        Goal:
+      </label>
+      <input
+        type="text"
+        id="goal"
+        value={goal}
+        onChange={handleGoalChange}
+        className="form-input"
+      />
+      <div className="checkbox-container">
+        <input
+          type="checkbox"
+          id="public"
+          checked={isPublic}
+          onChange={handleIsPublicChange}
+        />
+        <label htmlFor="public" className="checkbox-label">
+          Public
         </label>
-        <input type="text" value={name} onChange={handleNameChange} className="form-input" id="name" />
       </div>
-      <div className="form-group">
-        <label htmlFor="goal" className="form-label">
-          Goal:
-        </label>
-        <input type="text" value={goal} onChange={handleGoalChange} className="form-input" id="goal" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="isPublic" className="form-label">
-          Public:
-        </label>
-        <input type="checkbox" checked={isPublic} onChange={handleIsPublicChange} className="form-input-checkbox" id="isPublic" />
-      </div>
-      <button type="submit" className="form-submit-button">Create Routine</button>
+      <button type="submit" className="submit-button">
+        Create Routine
+      </button>
     </form>
   );
 }
