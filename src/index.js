@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
-import Routines from './Components/Routines/PublicRoutines';
+import MyRoutines from './Components/Routines/MyRoutines';
 import PublicRoutines from './Components/Routines/PublicRoutines';
 import Activities from './Components/Activities';
 import { useState } from 'react';
@@ -25,7 +25,7 @@ const App = () => {
           />
           <Route
             path='/routines'
-            element={<Routines
+            element={<PublicRoutines
               setIsLoggedIn={setIsLoggedIn}
               isLoggedIn={isLoggedIn}
               token={token} setToken={setToken}
@@ -33,7 +33,7 @@ const App = () => {
           />
           <Route
             path='/myRoutines'
-            element={<PublicRoutines
+            element={<MyRoutines
               setIsLoggedIn={setIsLoggedIn}
               isLoggedIn={isLoggedIn}
               token={token} setToken={setToken}
@@ -57,5 +57,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 )
-
-
