@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-const NewActivity = ({token, isLoggedIn}) => {
+const AddActivities = () => {
   const blankActivity = {name: "", description: ""};
   const [activity, setActivity] = useState(blankActivity);
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const NewActivity = ({token, isLoggedIn}) => {
   }
 
   return <>
-    <h1>Create a new activity!</h1>
+    <h1>Create a new activity</h1>
     <form className="createForm" onSubmit={createActivity}>
       <input type="text" name="name" value={activity.name} placeholder="Name of activity" minLength="1" required onChange={(event) => {
         setActivity({...activity, name: event.target.value})
