@@ -81,7 +81,7 @@ export default function CreateRoutine() {
       <input
         type="text"
         id="name"
-        value={name}
+        value={name}g
         onChange={handleNameChange}
         className="form-input"
       />
