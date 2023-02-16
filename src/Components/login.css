@@ -98,6 +98,8 @@
     box-shadow: .4rem .4rem 2.4rem .2rem hsla(0, 0%, 75%, 0.3);
     position: relative;
     overflow: hidden;
+    margin: auto;
+    margin-top: 10%;
     background: linear-gradient(90deg, #e6e4e4fa, #edededfc, rgba(226, 226, 226, 1));
 }
 

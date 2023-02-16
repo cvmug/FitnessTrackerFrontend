@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
+import './Home.css'
 
 const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => {
 
@@ -35,7 +36,17 @@ const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => 
             <Header
                 setIsLoggedIn={setIsLoggedIn} setToken={setToken}
                 isLoggedIn={isLoggedIn} token={token} user={user} setUser={setUser} />
-            <h1>Home</h1>
+            <section className="leftSection">
+
+                <p className="homeSlogan">Track your progress, reach your goals with ease!</p>
+
+            </section>
+            <section className="rightSection">
+
+                <div className="imgHome"></div>
+
+            </section>
+
         </>
     )
 }
