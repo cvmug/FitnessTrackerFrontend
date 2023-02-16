@@ -4,7 +4,7 @@ import './PublicRoutines.css'
 
 function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setUser }) {
   const [routines, setRoutines] = useState([]);
-  const [visibleRoutines, setVisibleRoutines] = useState([]);
+  const [numVisibleRoutines, setNumVisibleRoutines] = useState(5);
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -13,7 +13,6 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
       .then(response => response.json())
       .then(data => {
         setRoutines(data);
-        setVisibleRoutines(data.slice(0, 5));
         if (data.length > 5) {
           setShowLoadMore(true);
         }
@@ -22,25 +21,21 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleRoutines(routines.slice(0, visibleRoutines.length + 5));
-    if (visibleRoutines.length + 5 >= routines.length) {
+    setNumVisibleRoutines(numVisibleRoutines + 5);
+    if (numVisibleRoutines + 5 >= routines.length) {
       setShowLoadMore(false);
     }
   };
 
-  const [expandedRoutine, setExpandedRoutine] = useState(null);
-
-  const handleExpandRoutine = (id) => {
-    setExpandedRoutine(id === expandedRoutine ? null : id);
-  };
-
   const handleSearchQuery = (event) => {
     setSearchQuery(event.target.value.toLowerCase());
+    setNumVisibleRoutines(5);
+    setShowLoadMore(routines.length > 5);
   };
 
-  const filteredRoutines = visibleRoutines.filter((routine) =>
-    routine.name.toLowerCase().includes(searchQuery)
-  );
+  const filteredRoutines = routines
+    .filter((routine) => routine.name.toLowerCase().includes(searchQuery))
+    .slice(0, numVisibleRoutines);
 
   return (
     <>
@@ -64,13 +59,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
         </div>
         <div className="routine-list-container">
           {filteredRoutines.map((routine) => (
-            <div
-              key={routine.id}
-              className={`routine-card ${
-                routine.id === expandedRoutine ? "expanded" : ""
-              }`}
-              onClick={() => handleExpandRoutine(routine.id)}
-            >
+            <div key={routine.id} className="routine-card">
               <h3>{routine.name}</h3>
               <p>Goal: {routine.goal}</p>
               <p>Creator: {routine.creatorName}</p>
