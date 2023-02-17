@@ -3,6 +3,7 @@ import AddActivityToRoutine from './AddActivityToRoutine';
 import UpdateRoutine from './UpdateRoutine';
 import DeleteRoutine from './DeleteRoutine'
 import './DisplayMyRoutines.css'
+import UpdateRoutineActivity from './UpdateRoutineActivity';
 
 export default function DisplayMyRoutines() {
   const [token, setToken] = useState(null);
@@ -100,7 +101,18 @@ export default function DisplayMyRoutines() {
             />
           )}
           <UpdateRoutine token={token} routineId={routine.id} />
-          <DeleteRoutine 
+          <ul>
+            {routine.activities.map((activity) => {
+              return (
+              <li key={activity.id}>
+                {activity.name} - 
+                {activity.description}
+                <UpdateRoutineActivity routineActivityId={activity.routineActivityId}/>
+                </li>
+                );
+                })}
+                </ul>
+                <DeleteRoutine 
           token={token}
           routineId={routine.id}
           onRoutineDeleted={() => {
