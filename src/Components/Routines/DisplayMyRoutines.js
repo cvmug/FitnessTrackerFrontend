@@ -4,12 +4,14 @@ import UpdateRoutine from './UpdateRoutine';
 import DeleteRoutine from './DeleteRoutine'
 import './DisplayMyRoutines.css'
 import UpdateRoutineActivity from './UpdateRoutineActivity';
+import DeleteRoutineActivity from './DeleteRoutineActivity';
 
 export default function DisplayMyRoutines() {
   const [token, setToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState(null);
   const [routines, setRoutines] = useState([]);
+  
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -108,6 +110,7 @@ export default function DisplayMyRoutines() {
                   {activity.name} -
                   {activity.description}
                   <UpdateRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
+                  <DeleteRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
                 </li>
               );
             })}

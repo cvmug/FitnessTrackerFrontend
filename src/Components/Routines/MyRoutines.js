@@ -45,7 +45,6 @@ export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token,
         <CreateRoutine />
         <DisplayMyRoutines />
       </section>
-
     </div>
   )
 }
