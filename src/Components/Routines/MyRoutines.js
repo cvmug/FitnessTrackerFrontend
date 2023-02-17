@@ -20,10 +20,10 @@ export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token,
           })
             .then((response) => response.json())
             .then((result) => {
-              const user = result.data;
+              const _user = result;
               setUser(result);
-              if (user) {
-                console.log(user);
+              if (_user) {
+                console.log(_user);
               }
             })
             .catch((error) => console.log(error));
