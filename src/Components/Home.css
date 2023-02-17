@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .leftSection {
     position: fixed;
     top: 0;
@@ -7,6 +13,7 @@
     width: 60%;
     height: 100%;
     background-color: #fff7f1;
+    z-index: -1;
 }
 
 .rightSection {
@@ -79,6 +86,11 @@
     letter-spacing: 0.05em;
     color: rgb(155, 149, 74);
     z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.routinesLinkHome:hover {
+    transform: scale(1.05);
 }
 
 .imagesContainer {
@@ -102,15 +114,13 @@
 }
 
 #invertedcursor {
-    position: absolute;
+    position: relative;
     width: 40px;
     height: 40px;
     background: white;
     border: solid 3px rgb(107, 107, 107);
-    /* border-radius: 50%; */
     border-top-left-radius: 50%;
     border-bottom-right-radius: 50%;
-    /* border-bottom-left-radius: 10%; */
     border-top-right-radius: 40%;
     top: var(--y, 0);
     left: var(--x, 0);
@@ -118,5 +128,4 @@
     z-index: 2;
     mix-blend-mode: multiply;
     cursor: none;
-
 }

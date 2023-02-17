@@ -20,6 +20,7 @@ export default function DisplayMyRoutines() {
     if (localUsername) {
       setUsername(localUsername);
       fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${localUsername}/routines`, {
+
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
@@ -27,7 +28,10 @@ export default function DisplayMyRoutines() {
       })
         .then((response) => response.json())
         .then((result) => {
+          const userRoutines = result;
+
         const userRoutines = result.reverse();
+
           setRoutines(userRoutines);
         })
         .catch((error) => console.log(error));
@@ -69,6 +73,7 @@ export default function DisplayMyRoutines() {
         <div key={routine.id} className="my-routine-card">
           <h3>{routine.name}</h3>
           <p>Goal: {routine.goal}</p>
+
           <p>Public: {routine.isPublic ? 'Yes' : 'No'}</p>
           <ul className="activities-list">
             {routine.activities.map((activity) => (
@@ -98,8 +103,9 @@ export default function DisplayMyRoutines() {
                 setRoutines(updatedRoutines);
               }}
             />
+            
           )}
-          <UpdateRoutine token={token} routineId={routine.id} />
+  <UpdateRoutine token={token} routineId={routine.id} />
           <DeleteRoutine 
           token={token}
           routineId={routine.id}
@@ -113,3 +119,5 @@ export default function DisplayMyRoutines() {
             </div>
             );
 }
+
+        

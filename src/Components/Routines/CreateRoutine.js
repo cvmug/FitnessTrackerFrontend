@@ -48,8 +48,10 @@ export default function CreateRoutine() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    
     alert('Routine created successfully!');
     window.location.reload();
+
     fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
       method: 'POST',
       headers: {
@@ -83,7 +85,8 @@ export default function CreateRoutine() {
       <input
         type="text"
         id="name"
-        value={name}g
+        value={name}
+
         onChange={handleNameChange}
         className="form-input"
       />

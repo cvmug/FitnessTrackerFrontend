@@ -53,14 +53,16 @@ const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => 
                 setIsLoggedIn={setIsLoggedIn} setToken={setToken}
                 isLoggedIn={isLoggedIn} token={token} user={user} setUser={setUser} />
             <div id="invertedcursor"></div>
+
             <section className="leftSection">
                 <p className="homeSlogan">Track your progress, reach your goals with ease!</p>
+
             </section>
             <section className="rightSection">
                 <div className="imgHome"></div>
             </section>
-            <section className="routineSeciton">
 
+            <section className="routineSeciton">
                 <section className="imagesContainer">
                     <p className="routinesSloganHome">Track your progress, crush your goals, and make every day count with our customizable fitness routines!</p>
                     <Link className="routinesLinkHome" to='/routines'>Routines</Link>

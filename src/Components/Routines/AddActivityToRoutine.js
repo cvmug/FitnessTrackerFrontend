@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
+
 export default function AddActivityToRoutine({ routineId }) {
+
   const [token, setToken] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [count, setCount] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState(null);
-  const [showForm, setShowForm] = useState(false);
 
+  const [showForm, setShowForm] = useState(false);
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     setToken(localToken);
@@ -39,6 +41,7 @@ export default function AddActivityToRoutine({ routineId }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     window.location.reload();
 
     fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}/activities`, {
@@ -55,6 +58,7 @@ export default function AddActivityToRoutine({ routineId }) {
     })
       .then((response) => {
         if (response.ok) {
+
           setShowForm(false);
         } else {
           setError('Failed to add activity to routine');
@@ -62,10 +66,9 @@ export default function AddActivityToRoutine({ routineId }) {
       })
       .catch((error) => console.log(error));
   }
-
-  function handleCancel() {
-    setShowForm(false);
-  }
+function handleCancel(){
+setShowForm(false)
+}
 
   return (
     <div className='add-activity-to-routine-container'>
