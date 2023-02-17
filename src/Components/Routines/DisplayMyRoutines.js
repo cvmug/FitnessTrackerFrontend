@@ -21,14 +21,14 @@ export default function DisplayMyRoutines() {
     if (localUsername) {
       setUsername(localUsername);
       fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${localUsername}/routines`, {
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
         },
       })
         .then((response) => response.json())
         .then((result) => {
-        const userRoutines = result.reverse();
+          const userRoutines = result.reverse();
           setRoutines(userRoutines);
         })
         .catch((error) => console.log(error));
@@ -87,7 +87,7 @@ export default function DisplayMyRoutines() {
               activities={routine.activities}
               onActivityAdded={(newActivity) => {
                 const updatedActivities = [...routine.activities, newActivity];
-                  const updatedRoutines = routines.map((r) => {
+                const updatedRoutines = routines.map((r) => {
                   if (r.id === routine.id) {
                     return {
                       ...r,
@@ -104,24 +104,24 @@ export default function DisplayMyRoutines() {
           <ul>
             {routine.activities.map((activity) => {
               return (
-              <li key={activity.id}>
-                {activity.name} - 
-                {activity.description}
-                <UpdateRoutineActivity routineActivityId={activity.routineActivityId}/>
+                <li key={activity.id}>
+                  {activity.name} -
+                  {activity.description}
+                  <UpdateRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
                 </li>
-                );
-                })}
-                </ul>
-                <DeleteRoutine 
-          token={token}
-          routineId={routine.id}
-          onRoutineDeleted={() => {
-            const updatedRoutines = routines.filter((r) => r.id !== routine.id);
-            setRoutines(updatedRoutines);
+              );
+            })}
+          </ul>
+          <DeleteRoutine
+            token={token}
+            routineId={routine.id}
+            onRoutineDeleted={() => {
+              const updatedRoutines = routines.filter((r) => r.id !== routine.id);
+              setRoutines(updatedRoutines);
             }}
-            />
-            </div>
-            ))}
-            </div>
-            );
+          />
+        </div>
+      ))}
+    </div>
+  );
 }

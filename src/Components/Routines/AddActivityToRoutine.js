@@ -42,7 +42,7 @@ export default function AddActivityToRoutine({ routineId }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    window.location.reload();
+    // window.location.reload();
 
     fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}/activities`, {
       method: 'POST',
@@ -66,9 +66,9 @@ export default function AddActivityToRoutine({ routineId }) {
       })
       .catch((error) => console.log(error));
   }
-function handleCancel(){
-setShowForm(false)
-}
+  function handleCancel() {
+    setShowForm(false)
+  }
 
   return (
     <div className='add-activity-to-routine-container'>
