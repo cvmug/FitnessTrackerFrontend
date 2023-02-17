@@ -32,7 +32,6 @@ export default function UpdateRoutine({ token, routineId }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify(updatedRoutine),
     })
       .then((response) => response.json())
       .then((result) => console.log(result))

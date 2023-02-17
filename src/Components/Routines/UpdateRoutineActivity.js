@@ -1,38 +1,76 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function UpdateRoutineActivity({ routineActivityId }) {
-    const [count, setCount] = useState(null);
-    const [duration, setDuration] = useState(null);
-  
-    const handleUpdate = async () => {
-      try {
-        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/api/routine_activities/${routineActivityId}`, {
-          method: "PATCH",
-          body: JSON.stringify({
-            count,
-            duration
-          })
-        });
-        const result = await response.json();
-        console.log(result);
-      } catch (error) {
-        console.error(error);
-      }
+export default function UpdateRoutineActivity({ token, routineActivityId }) {
+  const [updatedActivity, setUpdatedActivity] = useState({
+    count: 0,
+    duration: 0,
+  });
+  const [error, setError] = useState(null);
+  const [activities, setActivities] = useState([]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert('Activity updated successfully!');
+
+    fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${routineActivityId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          count: updatedActivity.count,
+          duration: updatedActivity.duration
+        }),
+      })
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => setError('Failed to update routine activity'));      
+  }
+
+  function handleCountChange(event) {
+    const count = parseInt(event.target.value);
+    if (Number.isInteger(count)) {
+      setUpdatedActivity({ ...updatedActivity, count });
     }
-    
-    return (
-      <div>
+  }
+
+  function handleDurationChange(event) {
+    const duration = parseInt(event.target.value);
+    if (Number.isInteger(duration)) {
+      setUpdatedActivity({ ...updatedActivity, duration });
+    }
+  }
+
+  useEffect(() => {
+    fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setActivities(result);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  return (
+    <div className='update-routine-activity-container'>
+      <form className='update-routine-activity-form' onSubmit={handleSubmit}>
         <label>
           Count:
-          <input type="number" value={count} onChange={(event) => setCount(event.target.value)} />
+          <input type='number' value={updatedActivity.count} onChange={handleCountChange} />
         </label>
-        <br />
         <label>
-          Duration:
-          <input type="number" value={duration} onChange={(event) => setDuration(event.target.value)} />
+          Duration (in minutes):
+          <input type='number' value={updatedActivity.duration} onChange={handleDurationChange} />
         </label>
-        <br />
-        <button onClick={handleUpdate}>Update</button>
-      </div>
-    );
-  }
+        {error && <p className='error'>{error}</p>}
+        <div className='update-routine-activity-buttons'>
+          <button type='submit'>Update Activity</button>
+        </div>
+      </form>
+    </div>
+  );
+}
