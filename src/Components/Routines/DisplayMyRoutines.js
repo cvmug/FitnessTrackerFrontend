@@ -21,16 +21,14 @@ export default function DisplayMyRoutines() {
       setUsername(localUsername);
       fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${localUsername}/routines`, {
 
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
         },
       })
         .then((response) => response.json())
         .then((result) => {
-          const userRoutines = result;
-
-        const userRoutines = result.reverse();
+          const userRoutines = result.reverse();
 
           setRoutines(userRoutines);
         })
@@ -91,7 +89,7 @@ export default function DisplayMyRoutines() {
               activities={routine.activities}
               onActivityAdded={(newActivity) => {
                 const updatedActivities = [...routine.activities, newActivity];
-                  const updatedRoutines = routines.map((r) => {
+                const updatedRoutines = routines.map((r) => {
                   if (r.id === routine.id) {
                     return {
                       ...r,
@@ -103,21 +101,21 @@ export default function DisplayMyRoutines() {
                 setRoutines(updatedRoutines);
               }}
             />
-            
+
           )}
-  <UpdateRoutine token={token} routineId={routine.id} />
-          <DeleteRoutine 
-          token={token}
-          routineId={routine.id}
-          onRoutineDeleted={() => {
-            const updatedRoutines = routines.filter((r) => r.id !== routine.id);
-            setRoutines(updatedRoutines);
+          <UpdateRoutine token={token} routineId={routine.id} />
+          <DeleteRoutine
+            token={token}
+            routineId={routine.id}
+            onRoutineDeleted={() => {
+              const updatedRoutines = routines.filter((r) => r.id !== routine.id);
+              setRoutines(updatedRoutines);
             }}
-            />
-            </div>
-            ))}
-            </div>
-            );
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
 
-        
+
