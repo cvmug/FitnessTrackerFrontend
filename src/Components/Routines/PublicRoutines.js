@@ -47,10 +47,12 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
         user={user}
         setUser={setUser}
       />
+
       <div className='blueSec'></div>
       <div className='leftSection'></div>
       <div className="routine-list">
         <h2 className="routine-list-title">PUBLIC ROUTINES</h2>
+
         <div className="search-box">
           <input
             type="text"
@@ -59,7 +61,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
             onChange={handleSearchQuery}
           />
         </div>
-        {showLoadMore && (
+ {showLoadMore && (
           <button className="load-more-button" onClick={handleLoadMore}>
             Click to show more
           </button>
