@@ -150,3 +150,37 @@
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
   transform: scale(1.05);
 }
+
+.usersRoutinesContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(224, 224, 224);
+  padding: 15px;
+  gap: 10px;
+  border-radius: 5%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.individualRoutine {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+}
+
+.popUp {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.userName:hover .popUp {
+  visibility: visible;
+}
