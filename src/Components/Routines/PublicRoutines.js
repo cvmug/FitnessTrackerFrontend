@@ -8,8 +8,11 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [userClicked, setUserClicked] = useState(false)
+  const [activityClicked, setActivityClicked] = useState(false)
   const [currRoutineId, setCurrRoutineId] = useState("")
+  const [currActId, setCurrActId] = useState("")
   const [userRoutines, setUserRoutines] = useState([])
+  const [routinesWithActivity, setRoutinesWithActivity] = useState([])
 
   useEffect(() => {
     fetch('http://fitnesstrac-kr.herokuapp.com/api/routines')
@@ -42,6 +45,47 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
     if (!userClicked) {
       setUserRoutines([])
     }
+  }
+
+  const activityClickedBtn = (activity) => {
+    setActivityClicked(!activityClicked)
+    setCurrActId(activity.id)
+    console.log(activity.id)
+    if (!activityClicked) {
+      setRoutinesWithActivity([])
+    }
+  }
+
+  const routinesWithAct = (activityId) => {
+    if (!routinesWithAct) {
+      fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}/routines`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then(response => response.json())
+        .then(result => {
+          // console.log(result)
+          routinesWithAct(result)
+        })
+        .catch(console.error);
+      console.log(activityId)
+    }
+
+    return (
+      <>
+        <section className='usersRoutinesContainer'>
+          <h1 className='creatorName'>{activityId}'s routines</h1>
+          {/* {console.log(routinesWithActivity)} */}
+          {routinesWithActivity.map((routine) => (
+            <section className='individualRoutine'>
+              <h1>{routine.name}</h1>
+              <p>{routine.goal}</p>
+            </section>
+          ))}
+
+        </section>
+      </>
+    )
   }
 
   const usersRoutines = (username) => {
@@ -112,11 +156,13 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
                   <span className='popUp'>Click to see {routine.creatorName}'s routines</span>
                 </p>
                 {userClicked && routine.id === currRoutineId &&
-                  <div div >{usersRoutines(routine.creatorName)}</div>}
+                  <div>{usersRoutines(routine.creatorName)}</div>}
                 <ul className="activities-list">
                   {routine.activities.map((activity) => (
                     <li key={activity.id} className="activity-item">
-                      <p>{activity.name}</p>
+                      {activityClicked && activity.id === currActId && <div>{routinesWithAct(activity.id)}
+                      </div>}
+                      <p onClick={() => activityClickedBtn(activity)}>{activity.name}</p>
                       <p>{activity.description}</p>
                       <p>Duration: {activity.duration} minutes</p>
                       <p>Count: {activity.count}</p>
