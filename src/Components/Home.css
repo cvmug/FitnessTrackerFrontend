@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+.leftSection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: #fff7f1;
+}
+
+.rightSection {
+    position: fixed;
+    top: 0;
+    left: 58%;
+    width: 50%;
+    height: 100%;
+    background-color: #023a3e;
+}
+
+.routineSeciton {
+    position: absolute;
+    top: 962px;
+    left: 0;
+    width: 100%;
+    height: 92.5vh;
+    background-color: #fff7f1;
+}
+
+.imgHome {
+    background-image: url("./img/runner4.png");
+    width: 125%;
+    height: 115%;
+    background-repeat: no-repeat;
+    margin-left: -31em;
+    transform: scale(.6);
+}
+
+.homeSlogan {
+    margin-top: 2em;
+    padding: 45px;
+    position: relative;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 60px;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+.routinesSloganHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    padding: 20px;
+    width: 40%;
+    height: 30%;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+.routinesLinkHome {
+    position: absolute;
+    padding: 20px;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-top: 7em;
+    letter-spacing: 0.05em;
+    color: rgb(155, 149, 74);
+    z-index: 3;
+}
+
+.imagesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin: auto;
+    padding: 5em;
+    height: 100%;
+    width: 100%;
+}
+
+.bannerContaier {
+    background-image: url("./img/banner.png");
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 2em;
+}
+
+#invertedcursor {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: solid 3px rgb(107, 107, 107);
+    /* border-radius: 50%; */
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    /* border-bottom-left-radius: 10%; */
+    border-top-right-radius: 40%;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    mix-blend-mode: multiply;
+    cursor: none;
+
+}

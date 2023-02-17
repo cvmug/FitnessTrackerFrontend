@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +9,15 @@
 .headerNav {
     display: flex;
     flex-direction: row;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     height: 65px;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
     margin-bottom: 15px;
+    z-index: 999;
+    backdrop-filter: blur(2px);
 }
 
 .list {
@@ -24,10 +29,6 @@
     margin: 20px;
     list-style: none;
 
-}
-
-.title {
-    margin: 20px;
 }
 
 .headerLink,
@@ -43,6 +44,13 @@
     letter-spacing: 1px;
 }
 
+.title {
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Avenir Next", sans-serif;
+}
+
 .headerLink::after {
     content: '';
     position: absolute;
@@ -51,7 +59,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #000000;
+    background-color: #ffffff;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -61,15 +69,24 @@
     transform-origin: bottom left;
 }
 
+.headerLink {
+    color: white;
+}
+
 .loginButtonHeader {
     background-color: transparent;
-    border-radius: 50px;
+    border-radius: 5px;
     width: 100px;
     height: 40px;
     cursor: pointer;
+    background-color: #ff6e51;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
 }
 
 .loginButtonHeader:hover {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+    transform: scale(1.05);
 
 }
