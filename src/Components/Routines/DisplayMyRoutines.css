@@ -1,9 +1,20 @@
+.myRoutinesBody {
+  display: flex;
+  justify-content: center;
+}
+
 .my-routine-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 10px;
+  margin-top: 5em;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

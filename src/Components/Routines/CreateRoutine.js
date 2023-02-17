@@ -48,9 +48,9 @@ export default function CreateRoutine() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    
+
     alert('Routine created successfully!');
-    window.location.reload();
+    // window.location.reload();
 
     fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
       method: 'POST',
@@ -77,8 +77,8 @@ export default function CreateRoutine() {
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
-    <h1 className='form-title'> Create Routine </h1>
-    <br/>
+      <h1 className='form-title'> Create Routine </h1>
+      <br />
       <label htmlFor="name" className="form-label">
         Name:
       </label>

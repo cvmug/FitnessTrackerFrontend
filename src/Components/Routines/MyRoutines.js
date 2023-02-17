@@ -4,45 +4,48 @@ import CreateRoutine from './CreateRoutine'
 import DisplayMyRoutines from './DisplayMyRoutines'
 
 export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setUser }) {
-    
-    useEffect(() => {
-        const localToken = window.localStorage.getItem('token');
-        setToken(localToken);
-        if (localToken) {
-          setIsLoggedIn(true);
-        }
-        if (token) {
-          fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${localToken}`,
-            },
-          })
-            .then((response) => response.json())
-            .then((result) => {
 
-              const user = result.data;
-              setUser(result);
-              if (user) {
-                console.log(user);
+  useEffect(() => {
+    const localToken = window.localStorage.getItem('token');
+    setToken(localToken);
+    if (localToken) {
+      setIsLoggedIn(true);
+    }
+    if (token) {
+      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
 
-              }
-            })
-            .catch((error) => console.log(error));
-        }
-      }, []);
+          const user = result.data;
+          setUser(result);
+          if (user) {
+            console.log(user);
+
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
 
   return (
     <div>
-        <Header
-        setIsLoggedIn={setIsLoggedIn} 
+      <Header
+        setIsLoggedIn={setIsLoggedIn}
         setToken={setToken}
-        isLoggedIn={isLoggedIn} 
-        token={token} 
-        user={user} 
-        setUser={setUser} />              
+        isLoggedIn={isLoggedIn}
+        token={token}
+        user={user}
+        setUser={setUser} />
+      <section className='myRoutinesBody'>
         <CreateRoutine />
         <DisplayMyRoutines />
+      </section>
+
     </div>
   )
 }

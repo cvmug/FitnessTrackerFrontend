@@ -24,7 +24,7 @@ export default function UpdateRoutine({ token, routineId }) {
   function handleSubmit(event) {
     event.preventDefault();
     alert('Routine updated successfully!');
-    window.location.reload();
+    // window.location.reload();
 
     fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
       method: 'PATCH',
