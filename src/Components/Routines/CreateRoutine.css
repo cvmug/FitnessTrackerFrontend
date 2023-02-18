@@ -1,57 +1,159 @@
-.form-container {
-  display: flex;
-  flex-direction: column;
+.create-routine-modal-button {
   position: absolute;
-  max-width: 800px;
-  visibility: hidden;
-  margin-bottom: 50px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.form-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #555;
-}
-
-.form-label {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-}
-
-.form-input {
-  width: 100%;
-  padding: 10px;
+  background-color: #ff6e51;
   border: none;
   border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 15px 20px;
+  margin: 125px auto;
+  left: 0;
+  right: 0;
+  max-width: 185px;
+}
+
+.create-routine-form-container {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  animation: animatetop 0.4s ease-in-out;
+  width: 50rem;
+  padding: 4rem 2rem;
+  border-radius: .8rem;
+  color: hsl(0, 1%, 27%);
+  box-shadow: .4rem .4rem 2.4rem .2rem hsla(0, 0%, 75%, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 10%;
+  background: linear-gradient(90deg, #e6e4e4fa, #edededfc, rgba(226, 226, 226, 1));
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-routine-form-container:target {
+  display: flex;
+}
+
+.create-routine-form-input{
+  margin: 1em 0;
+  font-size: 1em;
+  padding-left: 10px;
+  height: 50px;
+  border: 1px solid hsla(0, 0%, 0%, 0.4);
+  border-radius: 4px;
+  outline: none;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.create-routine-form-button{
+  padding: 1em 2em;
+  background-color: #e0dcdc;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-size: 1em;
+  transition: all 1s ease;
+  outline: none;
+}
+
+.create-routine-form-button:hover{
+  background-color: #aaa9a9;
+}
+
+.create-routine-checkbox-label {
+  margin: 1em 0;
+  font-size: 1em;
+  padding-left: 10px;
+  height: 50px;
+  border-radius: 4px;
+  outline: none;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+@keyframes animatetop {
+  from {
+      top: -300px;
+      opacity: 0
+  }
+
+  to {
+      top: 0;
+      opacity: 1
+  }
+}
+
+.ReactModal__Overlay {
+background: none;
+}
+
+/* 
+
+
+.create-routine-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.create-routine-form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+.create-routine-form-label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.create-routine-form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 2px solid #ccc;
   margin-bottom: 20px;
 }
 
-.checkbox-container {
+.create-routine-checkbox-container {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
-.checkbox-label {
-  margin-left: 0.5rem;
+.create-routine-checkbox-label {
   font-size: 1.2rem;
+  margin-left: 10px;
 }
 
-.submit-button {
-  background-color: #333;
-  color: #fff;
+.create-routine-submit-button {
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
-.submit-button:hover {
-  background-color: #2c70ac;
-}
+.create-routine-submit-button:hover {
+  background-color: #3e8e41;
+} */
