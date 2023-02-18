@@ -1,13 +1,14 @@
 .create-routine-modal-button {
   position: absolute;
-  background-color: #ff6e51;
+  background-color: #333;
   border: none;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   font-size: 16px;
   padding: 15px 20px;
-  margin: 125px auto;
+  margin: 128px auto;
+  margin-left: 27em;
   left: 0;
   right: 0;
   max-width: 185px;
@@ -42,7 +43,7 @@
   display: flex;
 }
 
-.create-routine-form-input{
+.create-routine-form-input {
   margin: 1em 0;
   font-size: 1em;
   padding-left: 10px;
@@ -54,7 +55,7 @@
   border-radius: 10px;
 }
 
-.create-routine-form-button{
+.create-routine-form-button {
   padding: 1em 2em;
   background-color: #e0dcdc;
   color: rgb(0, 0, 0);
@@ -64,7 +65,7 @@
   outline: none;
 }
 
-.create-routine-form-button:hover{
+.create-routine-form-button:hover {
   background-color: #aaa9a9;
 }
 
@@ -81,18 +82,18 @@
 
 @keyframes animatetop {
   from {
-      top: -300px;
-      opacity: 0
+    top: -300px;
+    opacity: 0
   }
 
   to {
-      top: 0;
-      opacity: 1
+    top: 0;
+    opacity: 1
   }
 }
 
 .ReactModal__Overlay {
-background: none;
+  background: none;
 }
 
 /* 

@@ -108,7 +108,7 @@
   transform: scale(1.05);
 }
 
-.my-routines-search-box{
+.my-routines-search-box {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -125,4 +125,159 @@
   font-size: 16px;
   width: 250px;
   height: 50px;
+}
+
+.UpdateRoutineInput {
+  background-color: transparent;
+  border: none;
+  caret-color: #ff6e51;
+}
+
+.inputNameUpdate {
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0.02em 0.15em #1da9cc;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+  width: 80%;
+}
+
+.inputGoalUpdate {
+  color: #888;
+  font-size: 16px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  width: 70%;
+}
+
+.labelGoalUpdate {
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0.02em 0.15em #1da9cc;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+}
+
+.activityName {
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0.02em 0.15em #050505;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+}
+
+.hideUpdate {
+  display: none;
+  animation: rotateX 700ms ease-in-out forwards;
+  height: 80px;
+}
+
+.hideUpdate:hover {
+  display: block;
+}
+
+.UpdateRoutineInput:focus~.hideUpdate {
+  display: block;
+}
+
+.optionSec {
+  background-color: transparent;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #fff8f8;
+  color: #333;
+  border: 1px solid black;
+  transition: all 0.3s ease;
+}
+
+.updateRoutineBtn {
+  background-color: transparent;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #fff8f8;
+  color: #333;
+  border: 1px solid black;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.updateRoutineBtn:hover,
+.deleteRoutineBtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  transform: scale(1.05);
+}
+
+.pop {
+  visibility: hidden;
+  width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -90px;
+}
+
+.topSec:hover .pop {
+  visibility: visible;
+}
+
+.delete-routine-container {
+  position: absolute;
+  margin-left: 16em;
+}
+
+.deleteRoutineBtn {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+@keyframes rotateX {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+
+  50% {
+    transform: rotateX(-20deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
 }

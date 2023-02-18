@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function UpdateRoutineActivity({ routineActivityId, token }) {
   const [count, setCount] = useState(null);
@@ -25,18 +25,16 @@ export default function UpdateRoutineActivity({ routineActivityId, token }) {
   }
 
   return (
-    <div>
+    <div className='updateActivityForm'>
       <label>
         Count:
-        <input type="number" value={count} onChange={(event) => setCount(event.target.value)} />
+        <input className='durationInput' type="number" value={count} onChange={(event) => setCount(event.target.value)} />
       </label>
-      <br />
       <label>
         Duration:
-        <input type="number" value={duration} onChange={(event) => setDuration(event.target.value)} />
+        <input className='countInput' type="number" value={duration} onChange={(event) => setDuration(event.target.value)} />
       </label>
-      <br />
-      <button type='button' onClick={handleUpdate}>Update</button>
+      <button className='updateActivity' type='button' onClick={handleUpdate}>Update</button>
     </div>
   );
 }
