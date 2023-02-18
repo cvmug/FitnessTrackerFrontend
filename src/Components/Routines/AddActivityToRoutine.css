@@ -17,7 +17,34 @@
     transition: all 0.3s ease;
 }
 
-.addActivityBtn:hover {
+.updateActivity {
+    background-color: transparent;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.deleteActivity {
+    background-color: transparent;
+    border-radius: 5px;
+    width: 120px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #970c0c;
+    margin-top: 10px;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.addActivityBtn:hover,
+.updateActivity:hover,
+.deleteActivity:hover {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
     transform: scale(1.05);
 }
@@ -48,6 +75,16 @@
 .countInput,
 .durationInput {
     width: 20%;
-    padding: 3px;
+    padding: 2px;
     font-size: 16px;
+}
+
+.updateActivityForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    padding: 10px;
+
 }

@@ -171,10 +171,22 @@
   filter: blur(0.007em);
 }
 
+.activityName {
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0.02em 0.15em #050505;
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+}
+
 .hideUpdate {
   display: none;
   animation: rotateX 700ms ease-in-out forwards;
-  /* background-color: red; */
   height: 80px;
 }
 

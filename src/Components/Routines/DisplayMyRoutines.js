@@ -9,6 +9,7 @@ import DeleteRoutineActivity from './DeleteRoutineActivity';
 export default function DisplayMyRoutines() {
   const [token, setToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [updateClicked, setUpdateClicked] = useState(false)
   const [username, setUsername] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -69,11 +70,14 @@ export default function DisplayMyRoutines() {
     setSearchQuery(event.target.value.toLowerCase());
   };
 
+  const updateBtn = () => {
+    setUpdateClicked(!updateClicked)
+  }
+
   const filteredRoutines = routines.filter((routine) => {
     const routineName = routine.name.toLowerCase();
     return routineName.includes(searchQuery);
   });
-
 
   return (
     <div className="my-routine-list">
@@ -92,7 +96,6 @@ export default function DisplayMyRoutines() {
         {filteredRoutines.map((routine) => (
           <div key={routine.id} className="my-card">
             <div className="my-routine-card">
-              {/* <h3>{routine.name}</h3> */}
               <DeleteRoutine
                 token={token}
                 routineId={routine.id}
@@ -102,15 +105,21 @@ export default function DisplayMyRoutines() {
                 }}
               />
               <UpdateRoutine token={token} routineId={routine.id} routineName={routine.name} routineGoal={routine.goal} routineIsPublic={routine.isPublic} />
-              {/* <p>Goal: {routine.goal}</p> */}
-              {/* <p>Public: {routine.isPublic ? 'Yes' : 'No'}</p> */}
               <ul className="my-routine-activities-list">
                 {routine.activities.map((activity) => (
                   <li key={activity.id} className="my-routine-activity-item">
-                    <p>{activity.name}</p>
+                    <h4 className='activityName'>{activity.name}</h4>
                     <p>{activity.description}</p>
                     <p>Duration: {activity.duration} minutes</p>
                     <p>Count: {activity.count}</p>
+                    <button className='updateActivity' onClick={() => { updateBtn() }}>Update Activity</button>
+                    {
+                      updateClicked &&
+                      <section>
+                        <UpdateRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
+                        <DeleteRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
+                      </section>
+                    }
                   </li>
                 ))}
               </ul>
@@ -133,16 +142,6 @@ export default function DisplayMyRoutines() {
                   }}
                 />
               )}
-              <ul>
-                {routine.activities.map((activity) => (
-                  <li key={activity.id}>
-                    {activity.name} - {activity.description}
-                    <UpdateRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
-                    <DeleteRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
-                  </li>
-                ))}
-              </ul>
-
             </div>
           </div>
         ))}

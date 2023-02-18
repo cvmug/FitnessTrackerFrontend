@@ -11,24 +11,24 @@ function DeleteRoutineActivity({ routineActivityId, token, onDelete }) {
         'Authorization': `Bearer ${token}`
       }
     })
-    .then(response => response.json())
-    .then(result => {
-      setIsDeleted(true);
-      if (onDelete) {
-        onDelete();
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
+      .then(response => response.json())
+      .then(result => {
+        setIsDeleted(true);
+        if (onDelete) {
+          onDelete();
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
-    
+
   if (isDeleted) {
     alert('Activity deleted successfully!');
   }
 
   return (
-    <button onClick={handleDelete}>
+    <button className='deleteActivity' onClick={handleDelete}>
       Delete Activity
     </button>
   );

@@ -82,8 +82,6 @@ export default function UpdateRoutine({ token, routineId, routineName, routineGo
             </div>
           </section>
         </section>
-
-
       </form>
     </div>
   );
