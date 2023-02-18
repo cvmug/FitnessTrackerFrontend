@@ -80,21 +80,22 @@ export default function DisplayMyRoutines() {
       <h2 className="my-routine-list-title">MY ROUTINES</h2>
 
       <div className="my-routines-search-box">
-          <input
-            type="text"
-            placeholder="Search routines by name"
-            value={searchQuery}
-            onChange={handleSearchQuery}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Search routines by name"
+          value={searchQuery}
+          onChange={handleSearchQuery}
+        />
+      </div>
 
       <div className="my-routine-list-container">
         {filteredRoutines.map((routine) => (
           <div key={routine.id} className="my-card">
             <div className="my-routine-card">
-              <h3>{routine.name}</h3>
-              <p>Goal: {routine.goal}</p>
-              <p>Public: {routine.isPublic ? 'Yes' : 'No'}</p>
+              {/* <h3>{routine.name}</h3> */}
+              <UpdateRoutine token={token} routineId={routine.id} routineName={routine.name} routineGoal={routine.goal} routineIsPublic={routine.isPublic} />
+              {/* <p>Goal: {routine.goal}</p> */}
+              {/* <p>Public: {routine.isPublic ? 'Yes' : 'No'}</p> */}
               <ul className="my-routine-activities-list">
                 {routine.activities.map((activity) => (
                   <li key={activity.id} className="my-routine-activity-item">
@@ -124,7 +125,6 @@ export default function DisplayMyRoutines() {
                   }}
                 />
               )}
-              <UpdateRoutine token={token} routineId={routine.id} />
               <ul>
                 {routine.activities.map((activity) => (
                   <li key={activity.id}>
