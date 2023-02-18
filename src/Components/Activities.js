@@ -1,63 +1,93 @@
-import React, { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import Header from "./Header";
+import React, { useState, useEffect } from 'react';
+import Header from './Header';
+import './Activities.css'
 
-const Activities = () => {
-    const [activities, setActivities] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const searchTerm = searchParams.get("searchTerm");
+function Activities({ setIsLoggedIn, setToken, isLoggedIn, token, user, setUser }) {
+  const [routines] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [numVisibleRoutines, setNumVisibleRoutines] = useState(5);
+  const [showLoadMore, setShowLoadMore] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-    const fetchActivities = async () => {
-        try {
-            const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/activities`);
-            const result = await response.json();
-            if (result.error) throw result.error;
-            setActivities(result);
-        } catch (error) {
-            console.log("Cannot Load Activities". error);
-        };
-    };
 
-    useEffect(fetchActivities, []);
-
-    const searchActivities = (activity, text) => {
-        text = text.toLowerCase();
-        const {name, description} = activity;
-        for (const field of [name, description]) {
-            if(field.toLowerCase().includes(text)) {
-                return true;
-            }
+  useEffect(() => {
+    fetch('http://fitnesstrac-kr.herokuapp.com/api/activities')
+      .then(response => response.json())
+      .then(data => {
+        setActivities(data);
+        if (data.length > 5) {
+          setShowLoadMore(true);
         }
+      })
+      .catch(error => console.error(error));
+  }, []);
+
+  const handleLoadMore = () => {
+    setNumVisibleRoutines(numVisibleRoutines + 5);
+    if (numVisibleRoutines + 5 >= routines.length) {
+      setShowLoadMore(false);
     }
+  };
 
-    const filteredActivities = searchTerm ? activities.filter(activity => searchActivities(activity, searchTerm)) : activities;
+  const handleSearchQuery = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+    setNumVisibleRoutines(5);
+    setShowLoadMore(routines.length > 5);
+  };
 
-    return <>
-                <Header />
-        <h1> Activities </h1>
-            <div>
-                <input className="searchbar" type="text" name="search" placeholder="Find Activities" value={searchTerm || ""} onChange={(event) => {
-                    setSearchParams({searchTerm:event.target.value})
-                }}/>
-                <Link to="/AddActivities"> Create a New Activity </Link>
+
+
+  const filteredActivities = activities
+    .filter((activity) => activity.name.toLowerCase().includes(searchQuery))
+    .slice(0, numVisibleRoutines);
+
+  return (
+    <>
+      <Header
+        setIsLoggedIn={setIsLoggedIn}
+        setToken={setToken}
+        isLoggedIn={isLoggedIn}
+        token={token}
+        user={user}
+        setUser={setUser}
+      />
+
+      <div className='blueSec'></div>
+      <div className='leftSection'></div>
+      <div className="routine-list">
+        <h2 className="routine-list-title">ALL ACTIVITIES</h2>
+
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Search activities by name"
+            value={searchQuery}
+            onChange={handleSearchQuery}
+          />
+        </div>
+        {showLoadMore && (
+          <button className="load-more-button" onClick={handleLoadMore}>
+            Click to show more
+          </button>
+        )}
+        <div className="routine-list-container">
+          {filteredActivities.map((activity, id) => (
+            <div className='card'>
+              <div key={activity.id} className="routine-card">
+                <h3>{activity.name}</h3>
+                <ul className="activities-list">
+                    <li key={activity.id} className="activity-item">
+                    <h3>{activity.description}</h3>
+                    </li>
+                </ul>
+              </div>
             </div>
-            <div>
-                { filteredActivities && filteredActivities.length ?
-                    filteredActivities.map((activity, id) => {
-                        return (
-                            <div key={id}>
-                                <div>
-                                    <span><b> Activity: </b><br /><br />{(activity.name).toUpperCase()}<br /></span>
-                                    <br />
-                                    <span><b> Description: </b><br /><span>{activity.description}</span></span>
-                                </div>
-                            </div>
-                        )
-                    })
-                    : null
-                }
-            </div>
+          ))}
+        </div>
+
+      </div>
     </>
+  );
 }
 
 export default Activities;
