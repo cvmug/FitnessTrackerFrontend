@@ -107,3 +107,22 @@
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
   transform: scale(1.05);
 }
+
+.my-routines-search-box{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 20px;
+  margin-left: 6em;
+}
+
+.my-routines-search-box input[type="text"] {
+  box-sizing: border-box;
+  margin-left: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 250px;
+  height: 50px;
+}

@@ -80,28 +80,27 @@ export default function CreateRoutine() {
   return (
     <div className='create-routine-container'>
       <button className='create-routine-modal-button' onClick={() => setIsModalOpen(true)}>Create New Routine</button>
-      <ReactModal isOpen={isModalOpen}>
-        <form onSubmit={handleSubmit} className="create-routine-form-container">
-          <h1 className="form-title">Create Routine</h1>
-          <br />
-          <label htmlFor="name" className="create-routine-form-label">
-            Name:
-          </label>
+      <ReactModal 
+      isOpen={isModalOpen}
+      className='create-routine-modal'>
+        <form onSubmit={handleSubmit} 
+        className="create-routine-form-container"
+        overlayClassName="Overlay"
+        >
           <input
             type="text"
             id="name"
             value={name}
             onChange={handleNameChange}
+            placeholder="Routine name"
             className="create-routine-form-input"
           />
-          <label htmlFor="goal" className="create-routine-form-label">
-            Goal:
-          </label>
           <input
             type="text"
             id="goal"
             value={goal}
             onChange={handleGoalChange}
+            placeholder="Routine goal"
             className="create-routine-form-input"
           />
           <div className="create-routine-checkbox-container">
@@ -112,7 +111,7 @@ export default function CreateRoutine() {
               onChange={handleIsPublicChange}
               className="create-routine-form-checkbox"
             />
-            <label htmlFor="public" className="create-routine-checkbox-label">
+            <label className="create-routine-checkbox-label">
               Public
             </label>
           </div>
