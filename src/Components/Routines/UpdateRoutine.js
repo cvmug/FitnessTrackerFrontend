@@ -23,21 +23,28 @@ export default function UpdateRoutine({ token, routineId }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    alert('Routine updated successfully!');
-    // window.location.reload();
-
+  
+    if (!updatedRoutine.name && !updatedRoutine.goal && updatedRoutine.isPublic === null) {
+      setError('Please update at least one field');
+      return;
+    }
+  
     fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
+      body: JSON.stringify(updatedRoutine)
     })
       .then((response) => response.json())
-      .then((result) => console.log(result))
+      .then((result) => {
+        alert('Routine updated successfully!');
+        // window.location.reload();
+      })
       .catch((error) => setError('Failed to update routine'));
   }
-
+  
   return (
     <div className='update-routine-container'>
       <form className='update-routine-form' onSubmit={handleSubmit}>
