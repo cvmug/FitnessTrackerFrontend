@@ -145,7 +145,7 @@
   user-select: none;
   white-space: nowrap;
   filter: blur(0.007em);
-  width: 100%;
+  width: 80%;
 }
 
 .inputGoalUpdate {
@@ -211,7 +211,8 @@
   transition: all 0.3s ease;
 }
 
-.updateRoutineBtn:hover {
+.updateRoutineBtn:hover,
+.deleteRoutineBtn:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
   transform: scale(1.05);
 }
@@ -233,6 +234,24 @@
 
 .topSec:hover .pop {
   visibility: visible;
+}
+
+.delete-routine-container {
+  position: absolute;
+  margin-left: 16em;
+}
+
+.deleteRoutineBtn {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 5px;
 }
 
 @keyframes rotateX {

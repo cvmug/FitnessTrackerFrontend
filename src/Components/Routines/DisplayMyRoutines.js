@@ -93,6 +93,14 @@ export default function DisplayMyRoutines() {
           <div key={routine.id} className="my-card">
             <div className="my-routine-card">
               {/* <h3>{routine.name}</h3> */}
+              <DeleteRoutine
+                token={token}
+                routineId={routine.id}
+                onRoutineDeleted={() => {
+                  const updatedRoutines = routines.filter((r) => r.id !== routine.id);
+                  setRoutines(updatedRoutines);
+                }}
+              />
               <UpdateRoutine token={token} routineId={routine.id} routineName={routine.name} routineGoal={routine.goal} routineIsPublic={routine.isPublic} />
               {/* <p>Goal: {routine.goal}</p> */}
               {/* <p>Public: {routine.isPublic ? 'Yes' : 'No'}</p> */}
@@ -134,14 +142,7 @@ export default function DisplayMyRoutines() {
                   </li>
                 ))}
               </ul>
-              <DeleteRoutine
-                token={token}
-                routineId={routine.id}
-                onRoutineDeleted={() => {
-                  const updatedRoutines = routines.filter((r) => r.id !== routine.id);
-                  setRoutines(updatedRoutines);
-                }}
-              />
+
             </div>
           </div>
         ))}
