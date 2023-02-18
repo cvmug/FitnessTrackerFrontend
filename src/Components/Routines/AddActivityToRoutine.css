@@ -1,0 +1,53 @@
+.add-activity-to-routine-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+    padding: 10px;
+}
+
+.addActivityBtn {
+    background-color: transparent;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.addActivityBtn:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+    transform: scale(1.05);
+}
+
+.add-activity-to-routine-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.add-activity-to-routine-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.optionSec {
+    background-color: transparent;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #fff8f8;
+    color: #333;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+}
+
+.countInput,
+.durationInput {
+    width: 20%;
+    padding: 3px;
+    font-size: 16px;
+}

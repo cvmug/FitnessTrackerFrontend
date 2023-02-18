@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './AddActivityToRoutine.css'
 
 export default function AddActivityToRoutine({ routineId }) {
 
@@ -72,12 +72,12 @@ export default function AddActivityToRoutine({ routineId }) {
 
   return (
     <div className='add-activity-to-routine-container'>
-      <button onClick={() => setShowForm(true)}>Add Activity to Routine</button>
+      <button className='addActivityBtn' onClick={() => setShowForm(!showForm)}>Add Activity</button>
       {showForm && (
         <form className='add-activity-to-routine-form' onSubmit={handleSubmit}>
           <label>
             Select activity:
-            <select value={selectedActivity} onChange={handleActivityChange}>
+            <select className='optionSec' value={selectedActivity} onChange={handleActivityChange}>
               <option value=''>Select an activity</option>
               {activities.map((activity) => (
                 <option key={activity.id} value={activity.id}>
@@ -88,16 +88,16 @@ export default function AddActivityToRoutine({ routineId }) {
           </label>
           <label>
             Count:
-            <input type='number' value={count} onChange={handleCountChange} />
+            <input className='countInput' type='number' value={count} onChange={handleCountChange} />
           </label>
           <label>
             Duration (minutes):
-            <input type='number' value={duration} onChange={handleDurationChange} />
+            <input className='durationInput' type='number' value={duration} onChange={handleDurationChange} />
           </label>
           {error && <p className='error'>{error}</p>}
           <div className='add-activity-to-routine-buttons'>
-            <button type='submit'>Add Activity</button>
-            <button type='button' onClick={handleCancel}>Cancel</button>
+            <button className='addActivityBtn' type='submit'>Add Activity</button>
+            <button className='addActivityBtn' type='button' onClick={handleCancel}>Cancel</button>
           </div>
         </form>
       )}
