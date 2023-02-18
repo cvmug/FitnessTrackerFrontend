@@ -80,12 +80,12 @@ export default function CreateRoutine() {
   return (
     <div className='create-routine-container'>
       <button className='create-routine-modal-button' onClick={() => setIsModalOpen(true)}>Create New Routine</button>
-      <ReactModal 
-      isOpen={isModalOpen}
-      className='create-routine-modal'>
-        <form onSubmit={handleSubmit} 
-        className="create-routine-form-container"
-        overlayClassName="Overlay"
+      <ReactModal
+        isOpen={isModalOpen}
+        className='create-routine-modal'>
+        <form onSubmit={handleSubmit}
+          className="create-routine-form-container"
+          overlayClassName="Overlay"
         >
           <input
             type="text"
