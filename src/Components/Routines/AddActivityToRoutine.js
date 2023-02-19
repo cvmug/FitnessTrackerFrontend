@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './AddActivityToRoutine.css'
 
 export default function AddActivityToRoutine({ routineId }) {
 
@@ -98,6 +97,7 @@ export default function AddActivityToRoutine({ routineId }) {
           <div className='add-activity-to-routine-buttons'>
             <button className='addActivityBtn' type='submit'>Add Activity</button>
             <button className='addActivityBtn' type='button' onClick={handleCancel}>Cancel</button>
+
           </div>
         </form>
       )}

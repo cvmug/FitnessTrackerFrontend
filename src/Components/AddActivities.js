@@ -85,6 +85,7 @@ export default function AddActivities() {
           className="create-routine-form-container"
           overlayClassName="Overlay"
         >
+          <h1>Create Activity</h1>
           <input
             type="text"
             id="name"
@@ -104,7 +105,8 @@ export default function AddActivities() {
           <button type="submit" className="create-routine-form-button">
             Submit
           </button>
-          <button onClick={() => setIsModalOpen(false)}>Close</button>
+          <p className="txt"></p>
+          <button onClick={() => setIsModalOpen(false)} className="link-2"></button>
         </form>
       </ReactModal>
     </div>

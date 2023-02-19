@@ -16,6 +16,14 @@ const Header = ({ setIsLoggedIn, setToken, isLoggedIn, token }) => {
         setIsLoggedIn(false)
     }
 
+
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('.headerNav');
+        const title = document.querySelector('.title')
+        header.classList.toggle('header_bar', window.scrollY > 50);
+        title.classList.toggle('titleUpdate', window.scrollY > 50);
+    });
+
     return (
         <>
             <nav className="headerNav">
