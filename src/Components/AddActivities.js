@@ -74,7 +74,7 @@ export default function AddActivities() {
   return (
     <div className="create-routine-container">
       <button
-        className="create-routine-modal-button"
+        className="create-routine-modal-button-activity"
         onClick={() => setIsModalOpen(true)}
       >
         Add New Activity
