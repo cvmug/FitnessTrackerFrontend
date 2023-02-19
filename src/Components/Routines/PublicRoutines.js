@@ -15,6 +15,33 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
   const [routinesWithActivity, setRoutinesWithActivity] = useState([])
 
   useEffect(() => {
+    const localToken = window.localStorage.getItem('token');
+    setToken(localToken);
+    if (localToken) {
+      setIsLoggedIn(true);
+    }
+    if (token) {
+      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+
+          const user = result.data;
+          setUser(result);
+          if (user) {
+            console.log(user);
+
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
+
+  useEffect(() => {
     fetch('http://fitnesstrac-kr.herokuapp.com/api/routines')
       .then(response => response.json())
       .then(data => {
