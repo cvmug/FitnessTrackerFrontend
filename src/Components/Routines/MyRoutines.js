@@ -41,11 +41,12 @@ export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token,
         token={token}
         user={user}
         setUser={setUser} />
+      <div className='blueSec'></div>
+      <div className='leftSection'></div>
       <section className='myRoutinesBody'>
         <CreateRoutine />
         <DisplayMyRoutines />
       </section>
-
     </div>
   )
 }

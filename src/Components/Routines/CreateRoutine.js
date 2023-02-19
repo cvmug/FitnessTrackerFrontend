@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ReactModal from 'react-modal';
 import './CreateRoutine.css'
 
 export default function CreateRoutine() {
@@ -8,6 +9,7 @@ export default function CreateRoutine() {
   const [token, setToken] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -76,44 +78,49 @@ export default function CreateRoutine() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
-      <h1 className='form-title'> Create Routine </h1>
-      <br />
-      <label htmlFor="name" className="form-label">
-        Name:
-      </label>
-      <input
-        type="text"
-        id="name"
-        value={name}
-
-        onChange={handleNameChange}
-        className="form-input"
-      />
-      <label htmlFor="goal" className="form-label">
-        Goal:
-      </label>
-      <input
-        type="text"
-        id="goal"
-        value={goal}
-        onChange={handleGoalChange}
-        className="form-input"
-      />
-      <div className="checkbox-container">
-        <input
-          type="checkbox"
-          id="public"
-          checked={isPublic}
-          onChange={handleIsPublicChange}
-        />
-        <label htmlFor="public" className="checkbox-label">
-          Public
-        </label>
-      </div>
-      <button type="submit" className="submit-button">
-        Create Routine
-      </button>
-    </form>
+    <div className='create-routine-container'>
+      <button className='create-routine-modal-button' onClick={() => setIsModalOpen(true)}>Create New Routine</button>
+      <ReactModal
+        isOpen={isModalOpen}
+        className='create-routine-modal'>
+        <form onSubmit={handleSubmit}
+          className="create-routine-form-container"
+          overlayClassName="Overlay"
+        >
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleNameChange}
+            placeholder="Routine name"
+            className="create-routine-form-input"
+          />
+          <input
+            type="text"
+            id="goal"
+            value={goal}
+            onChange={handleGoalChange}
+            placeholder="Routine goal"
+            className="create-routine-form-input"
+          />
+          <div className="create-routine-checkbox-container">
+            <input
+              type="checkbox"
+              id="public"
+              checked={isPublic}
+              onChange={handleIsPublicChange}
+              className="create-routine-form-checkbox"
+            />
+            <label className="create-routine-checkbox-label">
+              Public
+            </label>
+          </div>
+          <button type="submit" className="create-routine-form-button">
+            Submit
+          </button>
+          <button onClick={() => setIsModalOpen(false)}>Close</button>
+        </form>
+      </ReactModal>
+    </div>
   );
 }

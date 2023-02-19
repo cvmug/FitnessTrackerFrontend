@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function DeleteRoutine({ token, routineId }) {
   const [error, setError] = useState(null);
-  
+
   function handleDelete() {
     fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
       method: 'DELETE',
@@ -16,16 +16,14 @@ export default function DeleteRoutine({ token, routineId }) {
         console.log(data);
         alert('Routine deleted successfully!');
         window.location.reload();
-          })
+      })
       .catch((error) => setError('Failed to delete routine'));
   }
-  
 
-  
   return (
     <div className='delete-routine-container'>
       {error && <p className='error'>{error}</p>}
-      <button type='button' onClick={handleDelete}>Delete Routine</button>
+      <button className='deleteRoutineBtn' type='button' onClick={handleDelete}>X</button>
     </div>
   );
 }
