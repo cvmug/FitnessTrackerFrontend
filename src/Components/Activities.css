@@ -30,7 +30,7 @@
   padding: 20px;
   width: 340px;
   padding: 20px;
-  height: 540px;
+  height: 270px;
   overflow: hidden;
   overflow-y: inherit;
   z-index: -1;
@@ -67,7 +67,7 @@
 .activities-list {
   margin-top: 10px;
   padding-left: 20px;
-  max-height: 540px;
+  max-height: 270px;
   overflow: hidden;
 }
 
@@ -141,7 +141,7 @@
 .card {
   background-image: url("./img/card.png");
   width: 340px;
-  height: 550px;
+  height: 275px;
   background-repeat: no-repeat;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.3s ease;
