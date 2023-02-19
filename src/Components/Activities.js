@@ -16,6 +16,34 @@ function Activities({
   const [numVisibleRoutines, setNumVisibleRoutines] = useState(6);
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  console.log(token)
+
+  useEffect(() => {
+    const localToken = window.localStorage.getItem('token');
+    setToken(localToken);
+    if (localToken) {
+      setIsLoggedIn(true);
+    }
+    if (token) {
+      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+
+          const user = result.data;
+          setUser(result);
+          if (user) {
+            console.log(user);
+
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
 
   useEffect(() => {
     fetch("http://fitnesstrac-kr.herokuapp.com/api/activities")
