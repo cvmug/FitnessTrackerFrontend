@@ -1,4 +1,4 @@
-.routine-list {
+/* .routine-list {
   margin: 0 auto;
   padding: 20px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -184,4 +184,20 @@
 
 .userName:hover .popUp {
   visibility: visible;
+} */
+
+.create-routine-modal-button-activity {
+  position: absolute;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 15px 20px;
+  margin-top: -70px;
+  margin-left: 39em;
+  left: 0;
+  right: 0;
+  max-width: 185px;
 }
