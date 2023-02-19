@@ -5,7 +5,7 @@
 }
 
 .routine-list-title {
-  margin-top: 50px;
+  margin-top: 65px;
   margin-left: 50px;
   font-size: 32px;
   font-weight: 600;
@@ -103,7 +103,6 @@
   cursor: pointer;
   font-size: 16px;
   padding: 15px 20px;
-  z-index: 3;
   margin-left: 1em;
 }
 
@@ -154,7 +153,7 @@
 .usersRoutinesContainer {
   display: flex;
   flex-direction: column;
-  background-color: rgb(224, 224, 224);
+  background-color: rgba(243, 233, 233, 0.425);
   padding: 15px;
   gap: 10px;
   border-radius: 5%;
@@ -163,13 +162,14 @@
 
 .individualRoutine {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  backdrop-filter: blur(20px);
   padding: 10px;
 }
 
 .popUp {
-  visibility: hidden;
   width: 120px;
-  background-color: #333;
+  background-color: #333333dc;
+  backdrop-filter: blur(20px);
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -179,8 +179,11 @@
   bottom: 100%;
   left: 50%;
   margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
 }
 
 .userName:hover .popUp {
-  visibility: visible;
+  opacity: 1;
 }

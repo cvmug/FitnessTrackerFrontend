@@ -81,7 +81,7 @@ export default function DisplayMyRoutines() {
 
   return (
     <div className="my-routine-list">
-      <h2 className="my-routine-list-title">MY ROUTINES</h2>
+      <h2 className="routine-list-title">MY ROUTINES</h2>
 
       <div className="my-routines-search-box">
         <input
