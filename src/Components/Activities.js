@@ -11,9 +11,9 @@ function Activities({
   user,
   setUser,
 }) {
-  const [routines] = useState([]);
+
   const [activities, setActivities] = useState([]);
-  const [numVisibleRoutines, setNumVisibleRoutines] = useState(5);
+  const [numVisibleRoutines, setNumVisibleRoutines] = useState(6);
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -22,7 +22,7 @@ function Activities({
       .then((response) => response.json())
       .then((data) => {
         setActivities(data);
-        if (data.length > 5) {
+        if (data.length > 6) {
           setShowLoadMore(true);
         }
       })
@@ -30,16 +30,16 @@ function Activities({
   }, []);
 
   const handleLoadMore = () => {
-    setNumVisibleRoutines(numVisibleRoutines + 5);
-    if (numVisibleRoutines + 5 >= routines.length) {
+    setNumVisibleRoutines(numVisibleRoutines + 6);
+    if (numVisibleRoutines + 6 >= activities.length) {
       setShowLoadMore(false);
     }
   };
 
   const handleSearchQuery = (event) => {
     setSearchQuery(event.target.value.toLowerCase());
-    setNumVisibleRoutines(5);
-    setShowLoadMore(routines.length > 5);
+    setNumVisibleRoutines(6);
+    setShowLoadMore(activities.length > 6);
   };
 
   const filteredActivities = activities
@@ -71,21 +71,21 @@ function Activities({
           />
         </div>
         <span>
-        {showLoadMore && (
-          <button className="load-more-button" onClick={handleLoadMore}>
-            Click to show more
-          </button>
-        )}
-        < AddActivities />
+          {showLoadMore && (
+            <button className="load-more-button" onClick={handleLoadMore}>
+              Click to show more
+            </button>
+          )}
+          < AddActivities />
         </span>
         <div className="routine-list-container">
           {filteredActivities.map((activity, id) => (
-            <div className="card">
+            <div className="activityCard">
               <div key={activity.id} className="routine-card">
                 <h3>{activity.name}</h3>
                 <ul className="activities-list">
                   <li key={activity.id} className="activity-item">
-                    <h3>{activity.description}</h3>
+                    <h1 className="actDescription">{activity.description}</h1>
                   </li>
                 </ul>
               </div>
