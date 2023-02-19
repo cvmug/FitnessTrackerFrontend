@@ -1,55 +1,112 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import ReactModal from "react-modal";
+import "./Routines/CreateRoutine.css";
 
-// const AddActivities = () => {
-//   const blankActivity = {name: "", description: ""};
-//   const [activity, setActivity] = useState(blankActivity);
-//   const navigate = useNavigate();
+export default function AddActivities() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [token, setToken] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-//   useEffect(() => {
-//       if(!isLoggedIn) navigate("/login")
-//   },[]);
+  useEffect(() => {
+    const localToken = window.localStorage.getItem("token");
+    setToken(localToken);
+    if (localToken) {
+      setIsLoggedIn(true);
+    }
+    if (token) {
+      fetch("http://fitnesstrac-kr.herokuapp.com/api/users/me", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          const user = result.data;
+          setUser(result);
+          if (user) {
+            console.log(user);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
 
-//   const createActivity = async (event) => {
-//     try {
-//       event.preventDefault();
-//       const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
-//         method: "POST",
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'Authorization': `Bearer ${token}`
-//         },
-//         body: JSON.stringify({
-//           name: activity.name,
-//           description: activity.description
-//         })
-//       }) 
-//       console.log(response);
-//       if(response.ok) {
-//         const result = await response.json();
-//         console.log(result);
-//         navigate("/activities");
-//       } else {
-//         alert(`Activity with the name ${activity.name} already exists.`);
-//       }
-//     } catch(error) {
-//       console.log("error", error);
-//     }
-//   }
+  function handleNameChange(event) {
+    setName(event.target.value);
+  }
 
-//   return <>
-//     <h1>Create a new activity</h1>
-//     <form className="createForm" onSubmit={createActivity}>
-//       <input type="text" name="name" value={activity.name} placeholder="Name of activity" minLength="1" required onChange={(event) => {
-//         setActivity({...activity, name: event.target.value})
-//       }}></input>
-//       <input type="text" name="description" value={activity.description} placeholder="Description of activity" minLength="1" required onChange={(event) => {
-//         setActivity({...activity, description: event.target.value})
-//       }}></input>
-//       <br />
-//       <button type="submit"> Create Activity </button>
-//     </form>
-//   </>
-// }
+  function handleDescriptionChange(event) {
+    setDescription(event.target.value);
+  }
 
-export default AddActivities; 
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    alert("Activity created successfully");
+    // window.location.reload();
+
+    fetch("http://fitnesstrac-kr.herokuapp.com/api/activities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        description
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  if (!isLoggedIn) {
+    return <p>Please log in to create a new activity.</p>;
+  }
+
+  return (
+    <div className="create-routine-container">
+      <button
+        className="create-routine-modal-button"
+        onClick={() => setIsModalOpen(true)}
+      >
+        Add New Activity
+      </button>
+      <ReactModal isOpen={isModalOpen} className="create-routine-modal">
+        <form
+          onSubmit={handleSubmit}
+          className="create-routine-form-container"
+          overlayClassName="Overlay"
+        >
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleNameChange}
+            placeholder="Activity Name"
+            className="create-routine-form-input"
+          />
+          <input
+            type="text"
+            id="goal"
+            value={description}
+            onChange={handleDescriptionChange}
+            placeholder="Activity Description"
+            className="create-routine-form-input"
+          />
+          <button type="submit" className="create-routine-form-button">
+            Submit
+          </button>
+          <button onClick={() => setIsModalOpen(false)}>Close</button>
+        </form>
+      </ReactModal>
+    </div>
+  );
+}
