@@ -37,7 +37,6 @@ const Header = ({ setIsLoggedIn, setToken, isLoggedIn, token }) => {
                         <button onClick={handleLogOutBtn} className='loginButtonHeader'>LOG OUT</button>
                         :
                         <button onClick={handleLogInBtn} className='loginButtonHeader'>SIGN IN</button>
-
                     }
                     <div className="loginContainerMain">
                         {showLogin
