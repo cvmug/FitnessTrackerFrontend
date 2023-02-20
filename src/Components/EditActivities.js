@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 
 export default function EditActivities({ activityId, token }) {
-  const [name, setName] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
 
   const handleUpdate = async () => {
+
+    if (!Number.isInteger(activityId)) {
+      console.error('Invalid activity ID:', activityId);
+      return;
+    }
+    
     try {
       const response = await fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}`, {
         method: "PATCH",

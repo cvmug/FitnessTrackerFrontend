@@ -125,10 +125,9 @@ function Activities({
                     {
                       updateClicked &&
                       <section>
-                        <EditActivities routineActivityId={activity.id} token={token} />
+                        <EditActivities activityId={activity.id} token={token} />
                       </section>
                     }
-
                 </ul>
               </div>
             </div>
