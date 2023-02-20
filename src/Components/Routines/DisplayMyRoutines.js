@@ -5,6 +5,7 @@ import DeleteRoutine from './DeleteRoutine'
 import './DisplayMyRoutines.css'
 import UpdateRoutineActivity from './UpdateRoutineActivity';
 import DeleteRoutineActivity from './DeleteRoutineActivity';
+import CreateRoutine from './CreateRoutine'
 
 export default function DisplayMyRoutines() {
   const [token, setToken] = useState(null);
@@ -107,7 +108,6 @@ export default function DisplayMyRoutines() {
   return (
     <div className="my-routine-list">
       <h2 className="routine-list-title">MY ROUTINES</h2>
-    <>
       <div className="my-routines-search-box">
         <input
           type="text"
@@ -116,11 +116,28 @@ export default function DisplayMyRoutines() {
           onChange={handleSearchQuery}
         />
       </div>
-    </>
       <div className="my-routine-list-container">
         {filteredRoutines.map((routine) => (
           <div key={routine.id} className="my-card">
             <div className="my-routine-card">
+            <CreateRoutine
+  token={token}
+  routineId={routine.id}
+  onRoutineCreated={() => {
+    fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        const userRoutines = result.reverse();
+        setRoutines(userRoutines);
+      })
+      .catch((error) => console.log(error));
+  }}
+/>
               <DeleteRoutine
                 token={token}
                 routineId={routine.id}
