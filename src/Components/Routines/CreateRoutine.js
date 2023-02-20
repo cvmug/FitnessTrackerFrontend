@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import './CreateRoutine.css'
 
-export default function CreateRoutine({ token, routineId, onRoutineCreated }) {
+export default function CreateRoutine({ token, routineId, onRoutineCreated, isModalOpen, setIsModalOpen }) {
   const [name, setName] = useState('');
   const [goal, setGoal] = useState('');
   const [isPublic, setIsPublic] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -96,7 +95,7 @@ export default function CreateRoutine({ token, routineId, onRoutineCreated }) {
 
   return (
     <div className='create-routine-container'>
-      <button className='create-routine-modal-button' onClick={() => setIsModalOpen(true)}>Create New Routine</button>
+
       <ReactModal
         isOpen={isModalOpen}
         className='create-routine-modal'>
@@ -132,7 +131,9 @@ export default function CreateRoutine({ token, routineId, onRoutineCreated }) {
             <label className="create-routine-checkbox-label">
               Public
             </label>
+
           </div>
+
           <button type="submit" className="create-routine-form-button">
             Submit
           </button>
@@ -140,6 +141,7 @@ export default function CreateRoutine({ token, routineId, onRoutineCreated }) {
           <button onClick={() => setIsModalOpen(false)} className="link-2"></button>
         </form>
       </ReactModal>
+
     </div>
   );
 }
