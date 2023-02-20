@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function DeleteRoutine({ token, routineId }) {
+export default function DeleteRoutine({ token, routineId, onRoutineDeleted }) {
   const [error, setError] = useState(null);
 
   function handleDelete() {
@@ -15,7 +15,7 @@ export default function DeleteRoutine({ token, routineId }) {
       .then((data) => {
         console.log(data);
         alert('Routine deleted successfully!');
-        window.location.reload();
+        onRoutineDeleted();
       })
       .catch((error) => setError('Failed to delete routine'));
   }
