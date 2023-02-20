@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function DeleteRoutineActivity({ routineActivityId, token, onDelete }) {
+function DeleteRoutineActivity({ routineActivityId, token, onRoutineActivityDeleted }) {
   const [isDeleted, setIsDeleted] = useState(false);
 
   const handleDelete = () => {
@@ -14,9 +14,7 @@ function DeleteRoutineActivity({ routineActivityId, token, onDelete }) {
       .then(response => response.json())
       .then(result => {
         setIsDeleted(true);
-        if (onDelete) {
-          onDelete();
-        }
+        onRoutineActivityDeleted();
       })
       .catch(error => {
         console.error(error);

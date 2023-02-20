@@ -82,7 +82,7 @@ export default function DisplayMyRoutines() {
   return (
     <div className="my-routine-list">
       <h2 className="routine-list-title">MY ROUTINES</h2>
-
+    <>
       <div className="my-routines-search-box">
         <input
           type="text"
@@ -91,7 +91,7 @@ export default function DisplayMyRoutines() {
           onChange={handleSearchQuery}
         />
       </div>
-
+    </>
       <div className="my-routine-list-container">
         {filteredRoutines.map((routine) => (
           <div key={routine.id} className="my-card">
@@ -116,8 +116,17 @@ export default function DisplayMyRoutines() {
                     {
                       updateClicked &&
                       <section>
-                        <UpdateRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
-                        <DeleteRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
+                        <UpdateRoutineActivity 
+                        routineActivityId={activity.routineActivityId} 
+                        token={token} />
+                        <DeleteRoutineActivity 
+                        routineActivityId={activity.routineActivityId} 
+                        token={token}
+                        onRoutineActivityDeleted={() => {
+                          const updatedRoutines = routines.filter((r) => r.id !== routine.id);
+                          setRoutines(updatedRoutines);
+                        }}
+                         />
                       </section>
                     }
                   </li>
