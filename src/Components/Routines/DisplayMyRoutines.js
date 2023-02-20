@@ -79,6 +79,31 @@ export default function DisplayMyRoutines() {
     return routineName.includes(searchQuery);
   });
 
+  const handleActivityUpdated = (updatedActivity) => {
+    const updatedRoutines = routines.map((routine) => {
+      if (routine.id === updatedActivity.routineId) {
+        const updatedActivities = routine.activities.map((activity) => {
+          if (activity.routineActivityId === updatedActivity.id) {
+            return {
+              ...activity,
+              name: updatedActivity.name,
+              description: updatedActivity.description,
+              duration: updatedActivity.duration,
+              count: updatedActivity.count,
+            };
+          }
+          return activity;
+        });
+        return {
+          ...routine,
+          activities: updatedActivities,
+        };
+      }
+      return routine;
+    });
+    setRoutines(updatedRoutines);
+  };
+
   return (
     <div className="my-routine-list">
       <h2 className="routine-list-title">MY ROUTINES</h2>
@@ -118,7 +143,8 @@ export default function DisplayMyRoutines() {
                       <section>
                         <UpdateRoutineActivity 
                         routineActivityId={activity.routineActivityId} 
-                        token={token} />
+                        token={token} 
+                        onActivityUpdated={handleActivityUpdated} />
                         <DeleteRoutineActivity 
                         routineActivityId={activity.routineActivityId} 
                         token={token}

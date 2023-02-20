@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-export default function UpdateRoutineActivity({ routineActivityId, token }) {
+export default function UpdateRoutineActivity({ routineActivityId, token, onActivityUpdated }) {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [count, setCount] = useState(null);
   const [duration, setDuration] = useState(null);
 
@@ -19,6 +21,7 @@ export default function UpdateRoutineActivity({ routineActivityId, token }) {
       });
       const result = await response.json();
       console.log(result);
+      onActivityUpdated(result);
     } catch (error) {
       console.error(error);
     }
