@@ -2,18 +2,16 @@ import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import './CreateRoutine.css'
 
-export default function CreateRoutine() {
+export default function CreateRoutine({ token, routineId, onRoutineCreated }) {
   const [name, setName] = useState('');
   const [goal, setGoal] = useState('');
   const [isPublic, setIsPublic] = useState(false);
-  const [token, setToken] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
-    setToken(localToken);
     if (localToken) {
       setIsLoggedIn(true);
     }
@@ -48,8 +46,26 @@ export default function CreateRoutine() {
     setIsPublic(event.target.checked);
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    const data = { name, goal, isPublic };
+    fetch(`https://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}/activities`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        setName('');
+        setGoal('');
+        setIsPublic(false);
+        onRoutineCreated();
+      })
+      .catch((error) => {
+      });
 
     alert('Routine created successfully!');
     // window.location.reload();
@@ -69,6 +85,7 @@ export default function CreateRoutine() {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
+        onRoutineCreated(result)
       })
       .catch((error) => console.log(error));
   }
