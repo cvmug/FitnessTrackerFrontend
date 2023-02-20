@@ -42,9 +42,8 @@ export default function AddActivityToRoutine({ routineId }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    // window.location.reload();
-
     fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}/activities`, {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

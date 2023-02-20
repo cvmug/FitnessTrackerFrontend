@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './header.css'
 import Login from "./Login";
 
-
 const Header = ({ setIsLoggedIn, setToken, isLoggedIn, token }) => {
     const [showLogin, setShowLogin] = useState(false)
 
@@ -15,7 +14,6 @@ const Header = ({ setIsLoggedIn, setToken, isLoggedIn, token }) => {
         window.localStorage.removeItem('token');
         setIsLoggedIn(false)
     }
-
 
     window.addEventListener('scroll', function () {
         const header = document.querySelector('.headerNav');

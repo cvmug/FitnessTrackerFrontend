@@ -84,8 +84,6 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
             })
         }).then(response => response.json())
             .then(result => {
-                console.log(result.name);
-                console.log(result.message)
                 if (result.name === "PasswordLengthError") {
                     setWeakPass(true)
                 }
@@ -96,7 +94,6 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
 
                 if (result.name === 'UserExistsError') {
                     setUserNameTaken(true)
-                    console.log(userNameTaken)
                 }
             })
             .catch(console.error)
@@ -118,7 +115,6 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
                 })
             }).then(response => response.json())
                 .then(result => {
-                    console.log(result)
                     if (result.token) {
                         setIsLoggedIn(true)
                         localStorage.setItem('token', result.token);
@@ -127,7 +123,6 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
                     }
                     if (result.name === 'IncorrectCredentialsError') {
                         setValidInfo(false)
-                        console.log(validInfo)
                     }
                 })
                 .catch(console.error);
