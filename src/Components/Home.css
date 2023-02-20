@@ -113,6 +113,10 @@
     margin-top: 2em;
 }
 
+.titleUpdate {
+    color: white;
+}
+
 #invertedcursor {
     position: relative;
     width: 40px;

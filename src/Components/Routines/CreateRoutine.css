@@ -7,7 +7,7 @@
   cursor: pointer;
   font-size: 16px;
   padding: 15px 20px;
-  margin: 128px auto;
+  margin: 144px auto;
   margin-left: 27em;
   left: 0;
   right: 0;
@@ -19,7 +19,7 @@
   display: flex;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@
   position: relative;
   overflow: hidden;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 14%;
   background: linear-gradient(90deg, #e6e4e4fa, #edededfc, rgba(226, 226, 226, 1));
   flex-direction: column;
   gap: 20px;
@@ -44,10 +44,11 @@
 }
 
 .create-routine-form-input {
-  margin: 1em 0;
+  margin-top: 2em;
   font-size: 1em;
   padding-left: 10px;
   height: 50px;
+  width: 400px;
   border: 1px solid hsla(0, 0%, 0%, 0.4);
   border-radius: 4px;
   outline: none;
@@ -63,6 +64,7 @@
   font-size: 1em;
   transition: all 1s ease;
   outline: none;
+  width: 400px;
 }
 
 .create-routine-form-button:hover {
@@ -80,6 +82,27 @@
   border-radius: 10px;
 }
 
+.closeModal {
+  position: absolute;
+  margin-left: 650px;
+  margin-bottom: 300px;
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.closeModal:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  transform: scale(1.05);
+}
+
 @keyframes animatetop {
   from {
     top: -300px;
@@ -95,66 +118,3 @@
 .ReactModal__Overlay {
   background: none;
 }
-
-/* 
-
-
-.create-routine-form-container {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-.create-routine-form-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0 0 20px 0;
-}
-
-.create-routine-form-label {
-  display: block;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-.create-routine-form-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 1.2rem;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 20px;
-}
-
-.create-routine-checkbox-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.create-routine-checkbox-label {
-  font-size: 1.2rem;
-  margin-left: 10px;
-}
-
-.create-routine-submit-button {
-  background-color: #4caf50;
-  color: white;
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.create-routine-submit-button:hover {
-  background-color: #3e8e41;
-} */

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import AddActivities from "./AddActivities";
+import EditActivities from "./EditActivities";
 import "./Activities.css";
+
+
+
 
 function Activities({
   setIsLoggedIn,
@@ -16,7 +20,12 @@ function Activities({
   const [numVisibleRoutines, setNumVisibleRoutines] = useState(6);
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [updateClicked, setUpdateClicked] = useState(false);
   console.log(token)
+
+  const updateBtn = () => {
+    setUpdateClicked(!updateClicked)
+  }
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -115,6 +124,14 @@ function Activities({
                   <li key={activity.id} className="activity-item">
                     <h1 className="actDescription">{activity.description}</h1>
                   </li>
+                  <button className='updateActivity' onClick={() => { updateBtn() }}>Update Activity</button>
+                    {
+                      updateClicked &&
+                      <section>
+                        <EditActivities routineActivityId={activity.id} token={token} />
+                      </section>
+                    }
+
                 </ul>
               </div>
             </div>
