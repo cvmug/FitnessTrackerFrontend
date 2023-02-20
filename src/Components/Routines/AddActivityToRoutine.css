@@ -73,7 +73,6 @@
     color: #333;
     border: 1px solid black;
     transition: all 0.3s ease;
-
 }
 
 .countInput,
@@ -91,5 +90,4 @@
     gap: 10px;
     border-radius: 5%;
     box-shadow: rgba(100, 100, 111, 0.253) 0px 7px 29px 0px;
-
 }
