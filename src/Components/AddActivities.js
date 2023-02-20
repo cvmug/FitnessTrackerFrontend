@@ -7,7 +7,6 @@ export default function AddActivities() {
   const [description, setDescription] = useState("");
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -25,11 +24,6 @@ export default function AddActivities() {
       })
         .then((response) => response.json())
         .then((result) => {
-          const user = result.data;
-          setUser(result);
-          if (user) {
-            console.log(user);
-          }
         })
         .catch((error) => console.log(error));
     }
@@ -47,7 +41,6 @@ export default function AddActivities() {
     event.preventDefault();
 
     alert("Activity created successfully");
-    // window.location.reload();
 
     fetch("HTTPS://fitnesstrac-kr.herokuapp.com/api/activities", {
       method: "POST",
@@ -62,7 +55,6 @@ export default function AddActivities() {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
       })
       .catch((error) => console.log(error));
   }

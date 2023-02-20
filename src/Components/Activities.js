@@ -18,7 +18,6 @@ function Activities({
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [updateClicked, setUpdateClicked] = useState(false);
-  console.log(token)
 
   const updateBtn = () => {
     setUpdateClicked(!updateClicked)
@@ -39,13 +38,6 @@ function Activities({
       })
         .then((response) => response.json())
         .then((result) => {
-
-          const user = result.data;
-          setUser(result);
-          if (user) {
-            console.log(user);
-
-          }
         })
         .catch((error) => console.log(error));
     }

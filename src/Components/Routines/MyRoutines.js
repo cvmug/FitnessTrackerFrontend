@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import Header from '../Header'
-import CreateRoutine from './CreateRoutine'
 import DisplayMyRoutines from './DisplayMyRoutines'
 
 export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setUser }) {
@@ -20,13 +19,6 @@ export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token,
       })
         .then((response) => response.json())
         .then((result) => {
-
-          const user = result.data;
-          setUser(result);
-          if (user) {
-            console.log(user);
-
-          }
         })
         .catch((error) => console.log(error));
     }
@@ -44,7 +36,6 @@ export default function MyRoutines({ setIsLoggedIn, setToken, isLoggedIn, token,
       <div className='blueSec'></div>
       <div className='leftSection'></div>
       <section className='myRoutinesBody'>
-        <CreateRoutine />
         <DisplayMyRoutines />
       </section>
     </div>

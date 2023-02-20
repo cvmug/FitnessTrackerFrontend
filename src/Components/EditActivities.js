@@ -24,7 +24,6 @@ export default function EditActivities({ activityId, token }) {
         })
       });
       const result = await response.json();
-      console.log(result);
     } catch (error) {
       console.error(error);
     }

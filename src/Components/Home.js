@@ -20,13 +20,6 @@ const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => 
             })
                 .then((response) => response.json())
                 .then((result) => {
-                    const user = result.data;
-                    setUser(result);
-                    if (user) {
-                        console.log(user)
-
-                    }
-                    console.log(user)
                 })
                 .catch((error) => console.log(error));
         }

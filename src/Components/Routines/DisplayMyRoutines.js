@@ -5,6 +5,7 @@ import DeleteRoutine from './DeleteRoutine'
 import './DisplayMyRoutines.css'
 import UpdateRoutineActivity from './UpdateRoutineActivity';
 import DeleteRoutineActivity from './DeleteRoutineActivity';
+import CreateRoutine from './CreateRoutine'
 
 export default function DisplayMyRoutines() {
   const [token, setToken] = useState(null);
@@ -13,6 +14,8 @@ export default function DisplayMyRoutines() {
   const [username, setUsername] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -79,10 +82,34 @@ export default function DisplayMyRoutines() {
     return routineName.includes(searchQuery);
   });
 
+  const handleActivityUpdated = (updatedActivity) => {
+    const updatedRoutines = routines.map((routine) => {
+      if (routine.id === updatedActivity.routineId) {
+        const updatedActivities = routine.activities.map((activity) => {
+          if (activity.routineActivityId === updatedActivity.id) {
+            return {
+              ...activity,
+              name: updatedActivity.name,
+              description: updatedActivity.description,
+              duration: updatedActivity.duration,
+              count: updatedActivity.count,
+            };
+          }
+          return activity;
+        });
+        return {
+          ...routine,
+          activities: updatedActivities,
+        };
+      }
+      return routine;
+    });
+    setRoutines(updatedRoutines);
+  };
+
   return (
     <div className="my-routine-list">
       <h2 className="routine-list-title">MY ROUTINES</h2>
-
       <div className="my-routines-search-box">
         <input
           type="text"
@@ -91,11 +118,32 @@ export default function DisplayMyRoutines() {
           onChange={handleSearchQuery}
         />
       </div>
+      <button className='create-routine-modal-button' onClick={() => setIsModalOpen(true)}>Create New Routine</button>
 
       <div className="my-routine-list-container">
         {filteredRoutines.map((routine) => (
           <div key={routine.id} className="my-card">
             <div className="my-routine-card">
+              <CreateRoutine
+                token={token}
+                routineId={routine.id}
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                onRoutineCreated={() => {
+                  fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${token}`,
+                    },
+                  })
+                    .then((response) => response.json())
+                    .then((result) => {
+                      const userRoutines = result.reverse();
+                      setRoutines(userRoutines);
+                    })
+                    .catch((error) => console.log(error));
+                }}
+              />
               <DeleteRoutine
                 token={token}
                 routineId={routine.id}
@@ -116,9 +164,27 @@ export default function DisplayMyRoutines() {
                     {
                       updateClicked &&
                       <section>
-                        <UpdateRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
-                        <DeleteRoutineActivity routineActivityId={activity.routineActivityId} token={token} />
-                      </section>
+                        <UpdateRoutineActivity 
+                        routineActivityId={activity.routineActivityId} 
+                        token={token} 
+                        onActivityUpdated={handleActivityUpdated} />
+                     <DeleteRoutineActivity 
+                      routineActivityId={activity.routineActivityId} 
+                      token={token}
+                      onRoutineActivityDeleted={() => {
+                        const updatedRoutines = routines.map((r) => {
+                          if (r.id === routine.id) {
+                            return {
+                              ...r,
+                              activities: r.activities.filter((a) => a.routineActivityId !== activity.routineActivityId)
+                            }
+                          }
+                          return r;
+                        });
+                        setRoutines(updatedRoutines);
+                      }}
+                    />
+                    </section>
                     }
                   </li>
                 ))}
