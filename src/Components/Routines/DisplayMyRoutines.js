@@ -164,19 +164,27 @@ export default function DisplayMyRoutines() {
                     {
                       updateClicked &&
                       <section>
-                        <UpdateRoutineActivity
-                          routineActivityId={activity.routineActivityId}
-                          token={token}
-                          onActivityUpdated={handleActivityUpdated} />
-                        <DeleteRoutineActivity
-                          routineActivityId={activity.routineActivityId}
-                          token={token}
-                          onRoutineActivityDeleted={() => {
-                            const updatedRoutines = routines.filter((r) => r.id !== routine.id);
-                            setRoutines(updatedRoutines);
-                          }}
-                        />
-                      </section>
+                        <UpdateRoutineActivity 
+                        routineActivityId={activity.routineActivityId} 
+                        token={token} 
+                        onActivityUpdated={handleActivityUpdated} />
+                     <DeleteRoutineActivity 
+                      routineActivityId={activity.routineActivityId} 
+                      token={token}
+                      onRoutineActivityDeleted={() => {
+                        const updatedRoutines = routines.map((r) => {
+                          if (r.id === routine.id) {
+                            return {
+                              ...r,
+                              activities: r.activities.filter((a) => a.routineActivityId !== activity.routineActivityId)
+                            }
+                          }
+                          return r;
+                        });
+                        setRoutines(updatedRoutines);
+                      }}
+                    />
+                    </section>
                     }
                   </li>
                 ))}
