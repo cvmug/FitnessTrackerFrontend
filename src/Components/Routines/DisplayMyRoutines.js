@@ -14,6 +14,8 @@ export default function DisplayMyRoutines() {
   const [username, setUsername] = useState(null);
   const [routines, setRoutines] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -116,28 +118,32 @@ export default function DisplayMyRoutines() {
           onChange={handleSearchQuery}
         />
       </div>
+      <button className='create-routine-modal-button' onClick={() => setIsModalOpen(true)}>Create New Routine</button>
+
       <div className="my-routine-list-container">
         {filteredRoutines.map((routine) => (
           <div key={routine.id} className="my-card">
             <div className="my-routine-card">
-            <CreateRoutine
-  token={token}
-  routineId={routine.id}
-  onRoutineCreated={() => {
-    fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        const userRoutines = result.reverse();
-        setRoutines(userRoutines);
-      })
-      .catch((error) => console.log(error));
-  }}
-/>
+              <CreateRoutine
+                token={token}
+                routineId={routine.id}
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                onRoutineCreated={() => {
+                  fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${token}`,
+                    },
+                  })
+                    .then((response) => response.json())
+                    .then((result) => {
+                      const userRoutines = result.reverse();
+                      setRoutines(userRoutines);
+                    })
+                    .catch((error) => console.log(error));
+                }}
+              />
               <DeleteRoutine
                 token={token}
                 routineId={routine.id}
@@ -158,27 +164,19 @@ export default function DisplayMyRoutines() {
                     {
                       updateClicked &&
                       <section>
-                        <UpdateRoutineActivity 
-                        routineActivityId={activity.routineActivityId} 
-                        token={token} 
-                        onActivityUpdated={handleActivityUpdated} />
-                     <DeleteRoutineActivity 
-                      routineActivityId={activity.routineActivityId} 
-                      token={token}
-                      onRoutineActivityDeleted={() => {
-                        const updatedRoutines = routines.map((r) => {
-                          if (r.id === routine.id) {
-                            return {
-                              ...r,
-                              activities: r.activities.filter((a) => a.routineActivityId !== activity.routineActivityId)
-                            }
-                          }
-                          return r;
-                        });
-                        setRoutines(updatedRoutines);
-                      }}
-                    />
-                    </section>
+                        <UpdateRoutineActivity
+                          routineActivityId={activity.routineActivityId}
+                          token={token}
+                          onActivityUpdated={handleActivityUpdated} />
+                        <DeleteRoutineActivity
+                          routineActivityId={activity.routineActivityId}
+                          token={token}
+                          onRoutineActivityDeleted={() => {
+                            const updatedRoutines = routines.filter((r) => r.id !== routine.id);
+                            setRoutines(updatedRoutines);
+                          }}
+                        />
+                      </section>
                     }
                   </li>
                 ))}

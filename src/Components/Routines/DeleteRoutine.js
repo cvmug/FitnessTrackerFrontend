@@ -13,7 +13,6 @@ export default function DeleteRoutine({ token, routineId, onRoutineDeleted }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         alert('Routine deleted successfully!');
         onRoutineDeleted();
       })

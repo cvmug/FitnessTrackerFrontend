@@ -1,8 +1,11 @@
 .add-activity-to-routine-form {
     margin-top: 20px;
     margin-bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
-    padding: 10px;
+    background-color: rgba(243, 233, 233, 0.425);
+    padding: 15px;
+    gap: 10px;
+    border-radius: 5%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .addActivityBtn {
@@ -70,7 +73,6 @@
     color: #333;
     border: 1px solid black;
     transition: all 0.3s ease;
-
 }
 
 .countInput,
@@ -83,9 +85,9 @@
 .updateActivityForm {
     display: flex;
     flex-direction: column;
+    background-color: rgba(243, 233, 233, 0.151);
+    padding: 15px;
     gap: 10px;
-    margin-top: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
-    padding: 10px;
-
+    border-radius: 5%;
+    box-shadow: rgba(100, 100, 111, 0.253) 0px 7px 29px 0px;
 }
