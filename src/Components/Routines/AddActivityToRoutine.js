@@ -15,7 +15,7 @@ export default function AddActivityToRoutine({ routineId }) {
     const localToken = window.localStorage.getItem('token');
     setToken(localToken);
 
-    fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+    fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/activities', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -42,7 +42,8 @@ export default function AddActivityToRoutine({ routineId }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}/activities`, {
+    fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}/activities`, {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

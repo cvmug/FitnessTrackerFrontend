@@ -73,7 +73,7 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
 
     const handleRegisterSumbit = async (event) => {
         event.preventDefault()
-        fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
+        fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/register', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ const Login = ({ showLogin, setShowLogin, setIsLoggedIn, setToken, setUser, isLo
         event.preventDefault()
 
         const fetchLogin = async () => {
-            await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
+            await fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/login', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'

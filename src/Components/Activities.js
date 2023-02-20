@@ -30,7 +30,7 @@ function Activities({
       setIsLoggedIn(true);
     }
     if (token) {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+      fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/me', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
@@ -44,7 +44,7 @@ function Activities({
   }, []);
 
   useEffect(() => {
-    fetch("http://fitnesstrac-kr.herokuapp.com/api/activities")
+    fetch("HTTPS://fitnesstrac-kr.herokuapp.com/api/activities")
       .then((response) => response.json())
       .then((data) => {
         setActivities(data);

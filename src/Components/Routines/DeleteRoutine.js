@@ -4,7 +4,7 @@ export default function DeleteRoutine({ token, routineId, onRoutineDeleted }) {
   const [error, setError] = useState(null);
 
   function handleDelete() {
-    fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
+    fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

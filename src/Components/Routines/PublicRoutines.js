@@ -21,7 +21,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
       setIsLoggedIn(true);
     }
     if (token) {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+      fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/me', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
@@ -42,7 +42,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
   }, []);
 
   useEffect(() => {
-    fetch('http://fitnesstrac-kr.herokuapp.com/api/routines')
+    fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/routines')
       .then(response => response.json())
       .then(data => {
         setRoutines(data);
@@ -85,7 +85,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
 
   const routinesWithAct = (activityId) => {
     if (!routinesWithAct) {
-      fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}/routines`, {
+      fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}/routines`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -116,7 +116,7 @@ function PublicRoutines({ setIsLoggedIn, setToken, isLoggedIn, token, user, setU
   }
 
   const usersRoutines = (username) => {
-    fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
+    fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json'
       },

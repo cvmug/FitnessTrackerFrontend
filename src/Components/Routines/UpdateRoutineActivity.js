@@ -8,7 +8,7 @@ export default function UpdateRoutineActivity({ routineActivityId, token, onActi
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${routineActivityId}`, {
+      const response = await fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/routine_activities/${routineActivityId}`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',

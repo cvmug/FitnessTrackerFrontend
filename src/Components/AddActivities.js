@@ -16,7 +16,7 @@ export default function AddActivities() {
       setIsLoggedIn(true);
     }
     if (token) {
-      fetch("http://fitnesstrac-kr.herokuapp.com/api/users/me", {
+      fetch("HTTPS://fitnesstrac-kr.herokuapp.com/api/users/me", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localToken}`,
@@ -42,7 +42,7 @@ export default function AddActivities() {
 
     alert("Activity created successfully");
 
-    fetch("http://fitnesstrac-kr.herokuapp.com/api/activities", {
+    fetch("HTTPS://fitnesstrac-kr.herokuapp.com/api/activities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
