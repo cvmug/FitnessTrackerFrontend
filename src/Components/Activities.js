@@ -114,13 +114,12 @@ function Activities({
                     <h1 className="actDescription">{activity.description}</h1>
                   </li>
                   <button className='updateActivity' onClick={() => { updateBtn() }}>Update Activity</button>
-                  {
-                    updateClicked &&
-                    <section>
-                      <EditActivities routineActivityId={activity.id} token={token} />
-                    </section>
-                  }
-
+                    {
+                      updateClicked &&
+                      <section>
+                        <EditActivities activityId={activity.id} token={token} />
+                      </section>
+                    }
                 </ul>
               </div>
             </div>
