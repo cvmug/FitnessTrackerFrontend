@@ -6,7 +6,7 @@ export default function EditActivities({ activityId, token }) {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}`, {
+      const response = await fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/activities/${activityId}`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',

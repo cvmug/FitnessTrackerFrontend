@@ -12,7 +12,7 @@ const Home = ({ setIsLoggedIn, isLoggedIn, setToken, token, user, setUser }) => 
             setIsLoggedIn(true)
         }
         if (token) {
-            fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+            fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/me', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localToken}`,

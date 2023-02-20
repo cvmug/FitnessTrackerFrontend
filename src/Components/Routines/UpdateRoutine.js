@@ -45,7 +45,7 @@ export default function UpdateRoutine({ token, routineId, routineName, routineGo
 
 
 
-    fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
+    fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/routines/${routineId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

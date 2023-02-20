@@ -23,7 +23,7 @@ export default function DisplayMyRoutines() {
     const localUsername = window.localStorage.getItem('username');
     if (localUsername) {
       setUsername(localUsername);
-      fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${localUsername}/routines`, {
+      fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/users/${localUsername}/routines`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
@@ -37,7 +37,7 @@ export default function DisplayMyRoutines() {
         .catch((error) => console.log(error));
     } else {
       if (token) {
-        fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+        fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/me', {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localToken}`,
@@ -48,7 +48,7 @@ export default function DisplayMyRoutines() {
             const username = result.username;
             setUsername(username);
             window.localStorage.setItem('username', username);
-            fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
+            fetch(`HTTPS://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`, {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localToken}`,

@@ -18,7 +18,7 @@ export default function CreateRoutine() {
       setIsLoggedIn(true);
     }
     if (token) {
-      fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+      fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/users/me', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
@@ -54,7 +54,7 @@ export default function CreateRoutine() {
     alert('Routine created successfully!');
     // window.location.reload();
 
-    fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
+    fetch('HTTPS://fitnesstrac-kr.herokuapp.com/api/routines', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
