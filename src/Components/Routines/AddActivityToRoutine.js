@@ -57,8 +57,8 @@ export default function AddActivityToRoutine({ routineId }) {
       })
     })
       .then((response) => {
-
         if (response.ok) {
+
           setShowForm(false);
         } else {
           setError('Failed to add activity to routine');
@@ -98,6 +98,7 @@ export default function AddActivityToRoutine({ routineId }) {
           <div className='add-activity-to-routine-buttons'>
             <button className='addActivityBtn' type='submit'>Add Activity</button>
             <button className='addActivityBtn' type='button' onClick={handleCancel}>Cancel</button>
+
           </div>
         </form>
       )}
