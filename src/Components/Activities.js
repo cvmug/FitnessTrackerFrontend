@@ -4,9 +4,6 @@ import AddActivities from "./AddActivities";
 import EditActivities from "./EditActivities";
 import "./Activities.css";
 
-
-
-
 function Activities({
   setIsLoggedIn,
   setToken,
@@ -21,7 +18,6 @@ function Activities({
   const [showLoadMore, setShowLoadMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [updateClicked, setUpdateClicked] = useState(false);
-  console.log(token)
 
   const updateBtn = () => {
     setUpdateClicked(!updateClicked)
@@ -42,13 +38,6 @@ function Activities({
       })
         .then((response) => response.json())
         .then((result) => {
-
-          const user = result.data;
-          setUser(result);
-          if (user) {
-            console.log(user);
-
-          }
         })
         .catch((error) => console.log(error));
     }
@@ -125,12 +114,12 @@ function Activities({
                     <h1 className="actDescription">{activity.description}</h1>
                   </li>
                   <button className='updateActivity' onClick={() => { updateBtn() }}>Update Activity</button>
-                    {
-                      updateClicked &&
-                      <section>
-                        <EditActivities routineActivityId={activity.id} token={token} />
-                      </section>
-                    }
+                  {
+                    updateClicked &&
+                    <section>
+                      <EditActivities routineActivityId={activity.id} token={token} />
+                    </section>
+                  }
 
                 </ul>
               </div>

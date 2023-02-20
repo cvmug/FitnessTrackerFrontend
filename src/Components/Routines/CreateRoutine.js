@@ -7,7 +7,7 @@ export default function CreateRoutine({ token, routineId, onRoutineCreated, isMo
   const [goal, setGoal] = useState('');
   const [isPublic, setIsPublic] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -23,11 +23,6 @@ export default function CreateRoutine({ token, routineId, onRoutineCreated, isMo
       })
         .then((response) => response.json())
         .then((result) => {
-          const user = result.data;
-          setUser(result);
-          if (user) {
-            console.log(user);
-          }
         })
         .catch((error) => console.log(error));
     }
@@ -83,7 +78,6 @@ export default function CreateRoutine({ token, routineId, onRoutineCreated, isMo
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         onRoutineCreated(result)
       })
       .catch((error) => console.log(error));
