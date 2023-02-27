@@ -1,3 +1,5 @@
+Deployed site: https://silly-torte-725ca7.netlify.app/
+
 Fitness Tracker App
 
 This is a fitness tracker app built with React, allowing users to register, log in, create activities, and routines to track their fitness progress.
